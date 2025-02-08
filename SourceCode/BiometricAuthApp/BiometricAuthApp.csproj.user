@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\user\Desktop\wolk\Биометрия\BiometricAuthApp\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Views\AddClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\EncryptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\FaceLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\NewAdminFaceScannerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\NewUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\UpdatePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\UserEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BiometricAuthApp\\LoginForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BiometricAuthApp\\LoginForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 334,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "BiometricAuthApp\\LoginForm.Designer.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.Designer.cs",
+              "RelativeToolTip": "BiometricAuthApp\\LoginForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T11:50:47.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.cs",
+              "RelativeDocumentMoniker": "BiometricAuthApp\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\wolk\\\u0411\u0438\u043E\u043C\u0435\u0442\u0440\u0438\u044F\\BiometricAuthApp\\LoginForm.cs",
+              "RelativeToolTip": "BiometricAuthApp\\LoginForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T11:48:31.943Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

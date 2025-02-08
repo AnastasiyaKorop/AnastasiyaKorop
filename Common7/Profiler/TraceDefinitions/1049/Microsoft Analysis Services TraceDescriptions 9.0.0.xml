@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventColumnDescriptions xmlns="http://tempuri.org/xmlfile.xsd">
+	<_locDefinition>
+		<_locDefault _loc="locNone"/>
+		<_locTag _loc="locData">DESCRIPTION</_locTag>
+		<_locTag _loc="locData">BESTPRACTICE</_locTag>
+	</_locDefinition>
+	<EVENTCATEGORIESLIST>
+		<EVENTCATEGORY>
+			<NAME>Command Events</NAME>
+			<DESCRIPTION>Коллекция событий для команд.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Discover Events</NAME>
+			<DESCRIPTION>Коллекция событий для запросов распознавания.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Discover Server State Events</NAME>
+			<DESCRIPTION>Коллекция событий для распознавания состояния сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Errors and Warnings</NAME>
+			<DESCRIPTION>Коллекция событий для ошибок сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Notification Events</NAME>
+			<DESCRIPTION>Коллекция событий уведомлений.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Progress Reports</NAME>
+			<DESCRIPTION>Коллекция событий для отчетов о состоянии.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Queries Events</NAME>
+			<DESCRIPTION>Коллекция событий для запросов.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Query Processing</NAME>
+      <DESCRIPTION>Коллекция событий для выполнения запросов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+			<NAME>Security Audit</NAME>
+			<DESCRIPTION>Коллекция классов событий аудита базы данных.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+		<EVENTCATEGORY>
+			<NAME>Session Events</NAME>
+			<DESCRIPTION>Коллекция событий сеанса.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENTCATEGORY>
+	</EVENTCATEGORIESLIST>
+	<EVENTLIST>
+		<!--Audit Login-->
+		<EVENT>
+			<ID>1</ID>
+			<DESCRIPTION>Собирает все новые события соединения с момента запуска трассировки, например запросы клиентов на соединение с сервером, на котором выполняется экземпляр SQL Server.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Audit Logout-->
+		<EVENT>
+			<ID>2</ID>
+			<DESCRIPTION>Собирает все новые события отключения с момента запуска трассировки, например выполнение клиентом команды отключения.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Audit Server Starts And Stops-->
+		<EVENT>
+			<ID>4</ID>
+			<DESCRIPTION>Регистрирует все операции отключения, запуска и приостановки службы.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Progress Report Begin-->
+		<EVENT>
+			<ID>5</ID>
+			<DESCRIPTION>Начало отчета о состоянии.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Progress Report End-->
+		<EVENT>
+			<ID>6</ID>
+			<DESCRIPTION>Окончание отчета о состоянии.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Progress Report Current-->
+		<EVENT>
+			<ID>7</ID>
+			<DESCRIPTION>Текущее состояние отчета о состоянии.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Progress Report Error-->
+		<EVENT>
+			<ID>8</ID>
+			<DESCRIPTION>Ошибка отчета о состоянии.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Query Begin-->
+		<EVENT>
+			<ID>9</ID>
+			<DESCRIPTION>Начало запроса.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Query End-->
+		<EVENT>
+			<ID>10</ID>
+			<DESCRIPTION>Окончание запроса.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Query Subcube-->
+		<EVENT>
+			<ID>11</ID>
+			<DESCRIPTION>Запрос к вложенному кубу для оптимизации с учетом использования.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Query Subcube Verbose-->
+		<EVENT>
+			<ID>12</ID>
+			<DESCRIPTION>Запрос подробных сведений у вложенного куба. Это событие может отрицательно сказаться на производительности, если оно будет включено.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Command Begin-->
+		<EVENT>
+			<ID>15</ID>
+			<DESCRIPTION>Начало команды.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Command End-->
+		<EVENT>
+			<ID>16</ID>
+			<DESCRIPTION>Окончание команды.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Error-->
+		<EVENT>
+			<ID>17</ID>
+			<DESCRIPTION>Ошибка сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Audit Object Permission Event-->
+		<EVENT>
+			<ID>18</ID>
+			<DESCRIPTION>Регистрирует изменения объектных разрешений.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Audit Backup/Restore Event-->
+		<EVENT>
+			<ID>19</ID>
+			<DESCRIPTION>Регистрирует операции резервного копирования и восстановления на сервере.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Server State Discover Begin-->
+		<EVENT>
+			<ID>33</ID>
+			<DESCRIPTION>Начало распознавания состояния сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Server State Discover Data-->
+		<EVENT>
+			<ID>34</ID>
+			<DESCRIPTION>Содержимое ответа по распознаванию состояния сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Server State Discover End-->
+		<EVENT>
+			<ID>35</ID>
+			<DESCRIPTION>Завершение распознавания состояния сервера.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Discover Begin-->
+		<EVENT>
+			<ID>36</ID>
+			<DESCRIPTION>Начало запроса распознавания.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Discover End-->
+		<EVENT>
+			<ID>38</ID>
+			<DESCRIPTION>Окончание запроса распознавания.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Notification-->
+		<EVENT>
+			<ID>39</ID>
+			<DESCRIPTION>Событие уведомления.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--User Defined-->
+		<EVENT>
+			<ID>40</ID>
+			<DESCRIPTION>Существующее пользовательское соединение.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Existing Connection-->
+		<EVENT>
+			<ID>41</ID>
+			<DESCRIPTION>Запрашивать подробные сведения у вложенного куба. Это событие может отрицательно сказаться на производительности, если оно будет включено.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Existing Session-->
+		<EVENT>
+			<ID>42</ID>
+			<DESCRIPTION>Существующий сеанс.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+		<!--Session Initialize-->
+		<EVENT>
+			<ID>43</ID>
+			<DESCRIPTION>Инициализация сеанса.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</EVENT>
+    <!--Get Data From Aggregation-->
+    <EVENT>
+      <ID>60</ID>
+      <DESCRIPTION>Ответить на запрос получением данных из агрегата. Это событие может отрицательно сказаться на производительности, если оно будет включено.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Get Data From Cache-->
+    <EVENT>
+      <ID>61</ID>
+      <DESCRIPTION>Ответить на запрос получением данных из одного из кэшей. Это событие может отрицательно сказаться на производительности, если оно будет включено.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Query Cube Begin-->
+    <EVENT>
+      <ID>70</ID>
+      <DESCRIPTION>Начало запроса куба.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Query Cube End-->
+    <EVENT>
+      <ID>71</ID>
+      <DESCRIPTION>Окончание запроса куба.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Calculate Non Empty Begin-->
+    <EVENT>
+      <ID>72</ID>
+      <DESCRIPTION>Начало вычисления непустого блока.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Calculate Non Empty Current-->
+    <EVENT>
+      <ID>73</ID>
+      <DESCRIPTION>Текущее состояние вычисления непустого блока.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Calculate Non Empty End-->
+    <EVENT>
+      <ID>74</ID>
+      <DESCRIPTION>Окончание вычисления непустого блока.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Serialize Results Begin-->
+    <EVENT>
+      <ID>75</ID>
+      <DESCRIPTION>Начало сериализации результатов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Serialize Results Current-->
+    <EVENT>
+      <ID>76</ID>
+      <DESCRIPTION>Текущее состояние сериализации результатов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Serialize Results End-->
+    <EVENT>
+      <ID>77</ID>
+      <DESCRIPTION>Окончание сериализации результатов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Execute MDX Script Begin-->
+    <EVENT>
+      <ID>78</ID>
+      <DESCRIPTION>Начало выполнения скрипта многомерных выражений.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Execute MDX Script Current-->
+    <EVENT>
+      <ID>79</ID>
+      <DESCRIPTION>Текущее состояние выполнения скрипта многомерных выражений.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Execute MDX Script End-->
+    <EVENT>
+      <ID>80</ID>
+      <DESCRIPTION>Окончание выполнения скрипта многомерных выражений.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Query Dimension-->
+      <EVENT>
+        <ID>81</ID>
+        <DESCRIPTION>Измерение запроса.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+  </EVENTLIST>
+	<COLUMNLIST>
+		<!--EventClass-->
+		<COLUMN>
+			<ID>0</ID>
+			<DESCRIPTION>Класс событий используется для классификации событий по категориям.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--EventSubclass-->
+		<COLUMN>
+			<ID>1</ID>
+			<DESCRIPTION>Подкласс события предоставляет дополнительные сведения о каждом классе событий.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--CurrentTime-->
+		<COLUMN>
+			<ID>2</ID>
+			<DESCRIPTION>Время начала события, если оно известно. Возможные форматы фильтров: "ГГГГ-ММ-ДД" и "ГГГГ-ММ-ДД ЧЧ:ММ:СС".</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--StartTime-->
+		<COLUMN>
+			<ID>3</ID>
+			<DESCRIPTION>Время начала события, если оно известно. Возможные форматы фильтров: "ГГГГ-ММ-ДД" и "ГГГГ-ММ-ДД ЧЧ:ММ:СС".</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--EndTime-->
+		<COLUMN>
+			<ID>4</ID>
+			<DESCRIPTION>Время окончания события, если оно известно. Этот столбец не заполняется для классов событий запуска, таких как SQL:BatchStarting или SP:Starting. Возможные форматы фильтров: "ГГГГ-ММ-ДД" и "ГГГГ-ММ-ДД ЧЧ:ММ:СС".</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--Duration-->
+		<COLUMN>
+			<ID>5</ID>
+			<DESCRIPTION>Количество времени (в миллисекундах), использованного событием.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--CPUTime-->
+		<COLUMN>
+			<ID>6</ID>
+			<DESCRIPTION>Количество процессорного времени (в миллисекундах), использованного событием.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--JobID-->
+		<COLUMN>
+			<ID>7</ID>
+			<DESCRIPTION>Идентификатор выполняемого задания.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--SessionType-->
+		<COLUMN>
+			<ID>8</ID>
+			<DESCRIPTION>Тип сеанса (какая сущность вызвала операцию).</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ProgressTotal-->
+		<COLUMN>
+			<ID>9</ID>
+			<DESCRIPTION>Общий ход выполнения.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--IntegerData-->
+		<COLUMN>
+			<ID>10</ID>
+			<DESCRIPTION>Целочисленное значение.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ObjectID-->
+		<COLUMN>
+			<ID>11</ID>
+			<DESCRIPTION>Идентификатор объекта (обратите внимание, что это строка).</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ObjectType-->
+		<COLUMN>
+			<ID>12</ID>
+			<DESCRIPTION>Тип объекта.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ObjectName-->
+		<COLUMN>
+			<ID>13</ID>
+			<DESCRIPTION>Имя объекта.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ObjectPath-->
+		<COLUMN>
+			<ID>14</ID>
+			<DESCRIPTION>Путь к объекту. Список родителей, разделенных запятой, начиная с родителя объекта.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ObjectReference-->
+		<COLUMN>
+			<ID>15</ID>
+			<DESCRIPTION>Ссылка на объект. Закодирована в виде документа XML для всех родителей с помощью тегов описания объекта.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--Severity-->
+		<COLUMN>
+			<ID>22</ID>
+			<DESCRIPTION>Степень серьезности исключения.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--Success-->
+		<COLUMN>
+			<ID>23</ID>
+			<DESCRIPTION>1 = успех. 0 = ошибка (например, 1 означает успешную проверку наличия разрешений, 0 означает ошибку при этой проверке).</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--Error-->
+		<COLUMN>
+			<ID>24</ID>
+			<DESCRIPTION>Номер ошибки для данного события.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ConnectionID-->
+		<COLUMN>
+			<ID>25</ID>
+			<DESCRIPTION>Уникальный идентификатор соединения.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--DatabaseName-->
+		<COLUMN>
+			<ID>28</ID>
+			<DESCRIPTION>Имя базы данных, в которой выполняется инструкция пользователя.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--NTUserName-->
+		<COLUMN>
+			<ID>32</ID>
+			<DESCRIPTION>Имя пользователя Windows.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--NTDomainName-->
+		<COLUMN>
+			<ID>33</ID>
+			<DESCRIPTION>Домен Windows, к которому принадлежит пользователь.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ClientHostName-->
+		<COLUMN>
+			<ID>35</ID>
+			<DESCRIPTION>Имя компьютера, на котором выполняется клиентская программа. Заполнение этого столбца данных производится в том случае, если клиент предоставляет имя узла.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ClientProcessID-->
+		<COLUMN>
+			<ID>36</ID>
+			<DESCRIPTION>Идентификатор процесса клиентского приложения.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ApplicationName-->
+		<COLUMN>
+			<ID>37</ID>
+			<DESCRIPTION>Имя клиентского приложения, создавшего соединение с сервером. Этот столбец заполняется значениями, передаваемыми приложением, а не отображаемым именем программы.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--SessionID-->
+		<COLUMN>
+			<ID>39</ID>
+			<DESCRIPTION>Идентификатор GUID сеанса.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--NTCanonicalUserName-->
+		<COLUMN>
+			<ID>40</ID>
+			<DESCRIPTION>Имя пользователя в канонической форме. Например, engineering.microsoft.com/software/someone.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--SPID-->
+		<COLUMN>
+			<ID>41</ID>
+			<DESCRIPTION>Идентификатор серверного процесса. Он уникально определяет пользовательский сеанс. Он прямо соответствует идентификатору GUID сеанса, используемого документом XML/A.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--TextData-->
+		<COLUMN>
+			<ID>42</ID>
+			<DESCRIPTION>Текстовые данные, связанные с событием.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--ServerName-->
+		<COLUMN>
+			<ID>43</ID>
+			<DESCRIPTION>Имя сервера, генерирующего событие.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--RequestParameters-->
+		<COLUMN>
+			<ID>44</ID>
+			<DESCRIPTION>Параметры параметризованных запросов и команд.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--RequestProperties-->
+		<COLUMN>
+			<ID>45</ID>
+			<DESCRIPTION>Свойства запроса XMLA.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+		<!--BinaryData-->
+		<COLUMN>
+			<ID>46</ID>
+			<DESCRIPTION>Двоичное значение, зависящее от класса событий, зафиксированного при трассировке.</DESCRIPTION>
+			<BESTPRACTICE/>
+		</COLUMN>
+	</COLUMNLIST>
+</EventColumnDescriptions>

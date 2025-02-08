@@ -1,0 +1,2619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MDXTemplates xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/MDXTemplates">
+	<_locDefinition>
+		<_locDefault _loc="locNone"/> 
+		<_locTag _loc="locData">Category</_locTag> 
+		<_locTag _loc="locData">Name</_locTag> 
+		<_locTag _loc="locData">Description</_locTag> 
+	</_locDefinition> 
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Ранг по положению</Name>
+		<Description>Возвращает ранг заданного кортежа в рамках указанного набора, основанный на положении кортежа в наборе.</Description>
+		<CalcMemberContent>
+			<Expression>Rank
+(
+   [&lt;&lt;Dimension&gt;&gt;].[&lt;&lt;Hierarchy&gt;&gt;].CurrentMember,
+   &lt;&lt;Ranking Set&gt;&gt;
+)
+
+// Returns the rank of the tuple within the set, 
+// where the rank is based on the position of the tuple within the set.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Ранг по значению</Name>
+		<Description>Возвращает ранг заданного кортежа в рамках указанного набора, определяемый значением заданного числового выражения.</Description>
+		<CalcMemberContent>
+			<Expression>Rank
+(
+   [&lt;&lt;Dimension&gt;&gt;].[&lt;&lt;Hierarchy&gt;&gt;].CurrentMember,
+   &lt;&lt;Ranking Set&gt;&gt;,
+   &lt;&lt;Numeric Ranking Expression&gt;&gt;
+)
+
+// Returns the rank of the tuple within the set,  
+// with the rank determined by the value of a specified numeric expression.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент прибыльности</Name>
+		<Description>Делит чистый доход на чистую выручку от продаж. Коэффициент прибыльности также называется операционной рентабельностью.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Net Income&gt;&gt; / &lt;&lt;Net Sales&gt;&gt;
+			</Expression>
+			<FormatString>Percent</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Бюджетное отклонение</Name>
+		<Description>Вычисляет разницу между фактической суммой и суммой, заложенной в бюджете или плане.</Description>
+		<CalcMemberContent>
+			<Expression>Case
+When IsEmpty
+     (
+        ( 
+          [Measures].[&lt;&lt;Amount Measure&gt;&gt;],
+          [&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;] 
+        )
+     ) 
+
+// Text that indicates the missing values for a budget. This text can be replaced with explicit Null, and then "Not Budgeted".	
+
+// Test account types to determine the order of subtraction.
+When [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].CurrentMember Is 
+     [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].[&lt;&lt;Expenditures Member]
+     Or
+     [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].CurrentMember Is 
+     [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].[&lt;&lt;Liabilities Member&gt;&gt;]
+
+Then ( [Measures].[&lt;&lt;Amount Measure&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;] ) 
+        -
+     ( [Measures].[&lt;&lt;Amount Measure&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Actual Member&gt;&gt;] )
+
+Else ( [Measures].[&lt;&lt;Amount Measure&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Actual Member&gt;&gt;] ) 
+        -
+     ( [Measures].[&lt;&lt;Amount Measure&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;] )
+End
+			</Expression>
+			<FormatString>Currency</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Процент от итога</Name>
+		<Description>Вычисляет отношение значения заданного элемента к значению всех элементов.</Description>
+		<CalcMemberContent>
+			<Expression>Case
+// Test to avoid division by zero.
+When IsEmpty
+     ( 
+        [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+     ) 
+Then Null
+
+Else ( [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember,
+       [Measures].[&lt;&lt;Target Measure&gt;&gt;] ) 
+     /
+     ( 
+	   // The Root function returns the (All) value for the target dimension.
+       Root		
+       ( 
+          [&lt;&lt;Target Dimension&gt;&gt;] 
+        ), 
+        [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+     )
+
+End
+			</Expression>
+			<FormatString>Percent</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Процент от родителя</Name>
+		<Description>Вычисляет отношение значения заданного элемента к значению родителя элемента.</Description>
+		<CalcMemberContent>
+			<Expression>Case
+// Test to avoid division by zero.
+When IsEmpty
+     ( 
+        [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+     ) 
+Then Null
+
+// Test for current coordinate being on the (All) member.
+When [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Level Is
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[(All)]
+Then 1
+
+Else ( [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember,
+       [Measures].[&lt;&lt;Target Measure&gt;&gt;] ) 
+     /
+     ( [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Parent,
+       [Measures].[&lt;&lt;Target Measure&gt;&gt;] )
+
+End
+			</Expression>
+			<FormatString>Percent</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Отфильтрованный набор элементов атрибута</Name>
+		<Description>Задает набор элементов атрибута, существующий в рамках значений другого атрибута.</Description>
+		<CalcMemberContent>
+			<Expression>Exists
+(
+  [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Attribute Hierarchy&gt;&gt;].Members,
+  Filter
+  (
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Related Attribute&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;].Members,
+	 [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Related Attribute&gt;&gt;].CurrentMember.MemberValue &lt;&lt;Expression&gt;&gt;
+  )
+)
+
+// The Exists function returns the set of members of one set that
+// exist with one or more tuples of one or more other sets.
+
+// The MemberValue function returns the value of a member.
+// value binding should be defined if the name and key columns
+// differ from one another.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>NamedSet</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Фильтр по значению свойства элемента</Name>
+		<Description>Фильтрует элементы набора на основе значения свойства элемента.</Description>
+		<CalcMemberContent>
+			<Expression>Filter
+(
+   [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;].Members,
+   // Val is a Visual Basic for Applications (VBA) function.
+   VBA!Val
+   (
+      [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Properties( "&lt;&lt;Target Member Property&gt;&gt;") 
+   )
+   &lt;&lt;Search Condition&gt;&gt;
+)
+
+// The target member property must be intrinsically numeric.
+// The search condition is typically a simple comparison operator.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Фильтр по значению атрибута</Name>
+		<Description>Фильтрует элементы одного атрибута на основе наличия значения другого атрибута в том же измерении.</Description>
+		<CalcMemberContent>
+			<Expression>Exists
+(
+   [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Attribute Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;].Members,
+   [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Filter Attribute Hierarchy&gt;&gt;].[&lt;&lt;Attribute Member&gt;&gt;]
+)
+
+// This expression will return the subset of target attribute hierarchy members that
+// exist with the specified member of the filter attribute hierarchy.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>	
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Верхние N процентов</Name>
+		<Description>Сортирует набор и возвращает такое количество верхних элементов, что их совокупное общее значение составляет не менее заданного процента.</Description>
+		<NamedSetContent>
+			<Expression>TopPercent
+(
+   &lt;&lt;Set&gt;&gt;,
+   &lt;&lt;Percentage&gt;&gt;,
+   &lt;&lt;Numeric Expression&gt;&gt;
+)
+
+// This expression will sort the set, and then return the specified number
+// of topmost Members whose cumulative total is at least the specified percentage.
+
+// The TopPercent function always breaks the hierarchy.
+			</Expression>
+		</NamedSetContent>
+		<Type>NamedSet</Type>
+	</Template>
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>N верхних</Name>
+		<Description>Возвращает указанное количество верхних элементов указанного набора.</Description>
+		<NamedSetContent>
+			<Expression>TopCount
+(
+   &lt;&lt;Set&gt;&gt;,
+   &lt;&lt;Count&gt;&gt;,
+   &lt;&lt;Numeric Expression&gt;&gt;
+)
+
+// This expression will return a specified number of items from the
+// topmost members of a specified set.
+
+// The TopCount function always breaks the hierarchy.			
+			</Expression>
+		</NamedSetContent>
+		<Type>NamedSet</Type>
+	</Template>	
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>N нижних</Name>
+		<Description>Возвращает указанное количество нижних элементов указанного набора.</Description>
+		<NamedSetContent>
+			<Expression>BottomCount
+(
+   &lt;&lt;Set&gt;&gt;,
+   &lt;&lt;Count&gt;&gt;,
+   &lt;&lt;Numeric Expression&gt;&gt;
+)
+
+// This expression will return a specified number of items from the 
+// bottommost members of a specified set.
+
+// The BottomCount function always breaks the hierarchy.			
+			</Expression>
+		</NamedSetContent>
+		<Type>NamedSet</Type>
+	</Template>	
+	<Template>
+		<Category>Аналитика</Category>
+		<Name>Нижние N процентов</Name>
+		<Description>Сортирует набор и возвращает такое количество нижних элементов, что их совокупное общее значение составляет не менее указанного процента.</Description>
+		<NamedSetContent>
+			<Expression>BottomPercent
+(
+   &lt;&lt;Set&gt;&gt;,
+   &lt;&lt;Percentage&gt;&gt;,
+   &lt;&lt;Numeric Expression&gt;&gt;
+)
+
+// This expression will sort the set and return the specified number
+// of bottommost members whose cumulative total is at least the specified percentage.
+
+// The BottomPercent function always breaks the hierarchy.
+			</Expression>
+		</NamedSetContent>
+		<Type>NamedSet</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Текущее значение</Name>
+		<Description>Вычисляет текущее значение суммы денег, которая получится в будущем.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Future Value&gt;&gt;
+/
+(1 + i)^t
+
+// This expression defines the present value of a sum of money to be
+// received at a future date.
+
+// i represents the annual interest rate.
+// t represents the number of years.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Будущее значение</Name>
+		<Description>Вычисляет будущую величину суммы денег, инвестированных на указанное количество лет, с учетом кредита и реинвестирования процентов.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Present Value&gt;&gt;(1 + i)^t
+
+// This expression defines the future value of a sum of money 
+// invested for specific number of years, assuming credit and reinvestment of interest. 
+
+// i represents the annual interest rate.
+// t represents the number of years.		
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Валовая прибыль</Name>
+		<Description>Вычисляет разницу между чистой выручкой от продаж и себестоимостью реализованной продукции.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Net Sales&gt;&gt; - &lt;&lt;Cost of Goods Sold&gt;&gt; 				
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент валовой прибыли</Name>
+		<Description>Вычисляет разницу между чистой выручкой от продаж и себестоимостью реализованной продукции, выраженную в процентах от чистых продаж.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Net Sales&gt;&gt; - &lt;&lt;Cost of Goods Sold&gt;&gt;
+/
+&lt;&lt;Net Sales&gt;&gt;
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>	
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Чистая выручка от продаж</Name>
+		<Description>Вычисляет валовые продажи за вычетом возмещений, скидок и льгот.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Gross Sales&gt;&gt; - 
+( &lt;&lt;Total Returns&gt;&gt; + 
+  &lt;&lt;Total Discounts&gt;&gt; + 
+  &lt;&lt;Total Allowances&gt;&gt;
+)
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Чистый доход</Name>
+		<Description>Вычисляет валовую выручку за вычетом операционных расходов, налогов, выплат процентов, амортизации и прочих расходов.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Gross Profit&gt;&gt; - 
+( &lt;&lt;Operating Expenses&gt;&gt; + 
+  &lt;&lt;Tax Expense&gt;&gt; + 
+  &lt;&lt;Interest&gt;&gt; + 
+  &lt;&lt;Depreciation&gt;&gt;
+)
+
+// Any additional relevant expenses that should be included.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Экономическая добавленная стоимость (EVA)</Name>
+		<Description>Задает меру экономических результатов, основанную на чистой прибыли организации за вычетом удержаний за потребление капитала.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Net operating Profit after tax&gt;&gt; – 
+( &lt;&lt;Capital&gt;&gt; * &lt;&lt;Cost of Capital&gt;&gt; )
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Период погашения дебиторской задолженности (DSO)</Name>
+		<Description>Показывает размер (обычно в днях) дебиторской задолженности по счетам организации и среднее время, требуемое на перевод задолженностей в денежные средства.</Description>
+		<CalcMemberContent>
+			<Expression>&lt;&lt;Receivables at Periods End&gt;&gt; / &lt;&lt;Sales Credited within Period&gt;&gt; *
+&lt;&lt;Number of Days in Period&gt;&gt;
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>С начала периода</Name>
+		<Description>Возвращает результат статистической обработки числового выражения с начала заданного периода до текущего периода.</Description>
+		<CalcMemberContent>
+			<Expression>Aggregate
+(
+  PeriodsToDate
+  (
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+	 [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember
+  ),
+  [Measures].[&lt;&lt;Target Measure&gt;&gt;]
+)
+
+// This expression will return the aggregated value of the target
+// measure over the specified time periods, beginning with the 
+// first member of the target level, and ending with the current member.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>Период на период</Name>
+		<Description>Сравнивает значение числового выражения в одном периоде (обычно текущем) с предыдущим периодом.</Description>
+		<CalcMemberContent>
+			<Expression>Case
+// Test for current coordinate being on (All) member.
+When [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Level Is
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[(All)]
+
+Then "NA"
+
+Else ( [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember,
+	   [Measures].[&lt;&lt;Target Measure&gt;&gt;] ) 
+	 -
+     ( 
+       ParallelPeriod
+       (
+          [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+          &lt;&lt;Number of Periods&gt;&gt;,
+	      [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember
+       ),
+       [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+     )
+End
+
+// This expression evaluates the difference between the value of the numeric
+// expression in the previous period and that of the current period.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>	
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>Прирост периода на период</Name>
+		<Description>Сравнивает значение числового выражения в одном периоде с предыдущим периодом как процент от значения предыдущего периода.</Description>
+		<CalcMemberContent>
+			<Expression>Case
+// Test for current coordinate being on (All) member.
+When [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Level Is
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[(All)]
+
+Then "NA"
+
+// Test to avoid division by zero.
+When IsEmpty
+     (
+       ( 
+         ParallelPeriod
+         (
+            [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+            &lt;&lt;Number of Periods&gt;&gt;,
+		    [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember
+         ),
+         [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+        )
+     ) 
+Then Null
+
+Else ( 
+       ( [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember,
+	     [Measures].[&lt;&lt;Target Measure&gt;&gt;] ) 
+	   -
+       ( 
+         ParallelPeriod
+         (
+            [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+            &lt;&lt;Number of Periods&gt;&gt;,
+	        [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember
+         ),
+         [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+       ) 
+	 )
+	 /
+     ( 
+       ParallelPeriod
+       (
+          [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+          &lt;&lt;Number of Periods&gt;&gt;,
+	      [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember
+       ),
+       [Measures].[&lt;&lt;Target Measure&gt;&gt;] 
+     )
+End
+
+// This expression evaluates the difference between the value of the numeric
+// expression in the previous period and that of the current period, as a
+// percentage of the previous period's value.
+			</Expression>
+			<FormatString>Percent</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>Баланс закрываемого периода</Name>
+		<Description>Возвращает значение последнего элемента среди потомков заданного элемента на указанном уровне.</Description>
+		<CalcMemberContent>
+			<Expression>Aggregate
+(
+  ClosingPeriod
+  ( 
+	 [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Member&gt;&gt;]
+  ),
+  [Measures].[&lt;&lt;Target Measure&gt;&gt;]
+)
+
+// This calculation returns the value of the last sibling of the specified
+// member among the descendants of a specific member at a specified level.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>Баланс открываемого периода</Name>
+		<Description>Возвращает значение первого элемента среди потомков заданного элемента на заданном уровне.</Description>
+		<CalcMemberContent>
+			<Expression>Aggregate
+(
+  OpeningPeriod
+  ( 
+	 [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Target Level&gt;&gt;],
+     [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].[&lt;&lt;Member&gt;&gt;]
+  ),
+  [Measures].[&lt;&lt;Target Measure&gt;&gt;]
+)
+
+// This calculation returns the value of the first sibling of the specified
+// member among the descendants of a specific member at a specified level.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Временной ряд</Category>
+		<Name>Скользящее среднее</Name>
+		<Description>Возвращает среднее значение элемента за заданный интервал времени.</Description>
+		<CalcMemberContent>
+			<Expression>Avg
+(
+   [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember.Lag(&lt;&lt;Periods to Lag&gt;&gt;) : 
+   [&lt;&lt;Target Dimension&gt;&gt;].[&lt;&lt;Target Hierarchy&gt;&gt;].CurrentMember, 
+   [Measures].[&lt;&lt;Target Measure&gt;&gt;]
+)
+
+// This calculation returns the average value of a member over the specified time interval.
+			</Expression>
+			<FormatString>Standard</FormatString>
+		</CalcMemberContent>
+		<Type>CalculatedMember</Type>
+	</Template>
+	<Template>
+		<Category>Стандартный</Category>
+		<Name>Отобразить соответствие</Name>
+		<Description>Отображает соответствие для выбранного объекта куба.</Description>
+		<StandardActionContent>
+			<Expression>"http://maps.msn.com/home.aspx?plce1=&lt;&lt;Entity to be Mapped&gt;&gt;&amp;regn1=&lt;&lt;Entity Region&gt;&gt;"
+
+// The "plce1" parameter represents a named location.
+
+// The "regn1" parameter indicates the region in which the named location is located.
+// The "regn1" parameter defaults to zero (0) if not explicitly specified.
+
+// 0 = North America
+// 1 = Europe
+// 2 = World Atlas
+// 3 = Australia
+// 4 = Brazil
+			</Expression>
+			<Condition></Condition>
+			<Target></Target>
+			<TargetType>AttributeMembers</TargetType>
+			<Description></Description>
+			<Type>Url</Type>
+			<Invocation>Interactive</Invocation>
+		</StandardActionContent>
+		<Type>StandardAction</Type>
+	</Template>
+	<Template>
+		<Category>Стандартный</Category>
+		<Name>Поиск термина</Name>
+		<Description>Поиск выбранного объекта куба в Интернете.</Description>
+		<StandardActionContent>
+			<Expression>"http://search.msn.com/results.aspx?q=&lt;&lt;Entity to Search&gt;&gt;"</Expression>
+			<Condition></Condition>
+			<Target></Target>
+			<TargetType>AttributeMembers</TargetType>
+			<Description></Description>
+			<Type>Url</Type>
+			<Invocation>Interactive</Invocation>
+		</StandardActionContent>
+		<Type>StandardAction</Type>
+	</Template>
+	<Template>
+		<Category>Отчеты</Category>
+		<Name>Просмотр отчета</Name>
+		<Description>Запускает отчет служб SQL Server Reporting Services для выбранного объекта куба.</Description>
+		<ReportActionContent>
+			<Expression></Expression>
+			<Condition></Condition>
+			<Target></Target>
+			<TargetType>AttributeMembers</TargetType>
+			<Description></Description>
+			<Type>Report</Type>
+			<ReportServerName>&lt;&lt;Target Server&gt;&gt;</ReportServerName>
+			<ReportServerPath>&lt;&lt;Report Server Virtual Directory&gt;&gt;?/&lt;&lt;Path to Report&gt;&gt;</ReportServerPath>
+			<Invocation>Interactive</Invocation>
+			<ReportFormat>HTML5</ReportFormat>
+		</ReportActionContent>
+		<Type>ReportingAction</Type>
+	</Template>
+	<Template>
+		<Category>Заказчики</Category>
+		<Name>Коэффициент хранения заказчиков</Name>
+		<Description>Вычисляет процент сохраненных заказчиков на основе числа заказчиков, потерянных за текущий период.</Description>
+		<KPIContent>
+			<ValueExpression>( 1- ( &lt;&lt;Number of Customers Lost&gt;&gt; / &lt;&lt;Total Number of Customers&gt;&gt; ) ) * 100
+			</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Customer Retention Rate goal.*/
+&lt;&lt;Customer Retention Rate Goal&gt;&gt;
+			</GoalExpression>
+			<StatusExpression>/*Customer Retention Rate refers to the name of this KPI. If you change the name, change the reference in these functions as well.*/
+IIf
+( 
+   KPIValue( "Customer Retention Rate" ) - KPIGoal( "Customer Retention Rate" ) &gt; =0, 1, -1 
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(  
+   KPIValue( "Customer Retention Rate" ) &gt;
+   ( KPIValue( "Customer Retention Rate" ),
+     ParallelPeriod
+	 ( 
+		[&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+		1,
+		[&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	 )  
+   ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет отношение сохраненных заказчиков к заказчикам, потерянным за указанный период.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Заказчики</Category>
+		<Name>Удовлетворенность заказчиков</Name>
+		<Description>Вычисляет и отслеживает процент удовлетворенных заказчиков от общего числа заказчиков.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Customer Satisfaction Measure&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Customer Satisfaction goal.*/
+&lt;&lt;Customer Satisfaction Goal&gt;&gt;
+			</GoalExpression>
+			<StatusExpression>/*Customer Satisfaction refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Customer Satisfaction" ) - KPIGoal( "Customer Satisfaction" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Customer Satisfaction" ) &gt;
+  ( KPIValue( "Customer Satisfaction" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности отслеживает процент удовлетворенных заказчиков от общего числа заказчиков. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Заказчики</Category>
+		<Name>Выгодность заказчиков</Name>
+		<Description>Отслеживает выгодность отдельных заказчиков и групп заказчиков.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Sales Measure&gt;&gt; - &lt;&lt;Cost of Good Sold&gt;&gt;</ValueExpression>
+			<GoalExpression>&lt;&lt;Budgeted Sales&gt;&gt; - &lt;&lt;Cost of Good Sold Forecast&gt;&gt;</GoalExpression>
+			<StatusExpression>/*Customer Profitability refers to the name of this KPI. If you change the name, change the reference in these functions as well.*/
+IIf
+( 
+   KPIValue( "Customer Profitability" ) - KPIGoal( "Customer Profitability" )&gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Customer Profitability" ) &gt;
+  ( KPIValue( "Customer Profitability" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Данный ключевой показатель эффективности (KPI) вычисляет выгодность отдельных заказчиков и групп заказчиков. Выражения состояния и тренда предполагают, что чем выше значение, тем лучше. Если это не так, то может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Заказчики</Category>
+		<Name>Процент новых клиентов за период</Name>
+		<Description>Вычисляет процент новых заказчиков от общего числа заказчиков.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Number of New Customers&gt;&gt; / &lt;&lt;Total Number of Customers&gt;&gt; *100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your goal for new customer acquisitions.*/</GoalExpression>
+			<StatusExpression>/*New Accounts per Period refers to the name of this KPI. If you change the name, change the reference in these functions as well.*/
+IIf
+( 
+   KPIValue( "New Accounts per Period" ) - KPIGoal( "New Accounts per Period" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "New Accounts per Period" ) &gt;
+  ( KPIValue( "New Accounts per Period" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет процент новых заказчиков от общего числа заказчиков. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Заказчики</Category>
+		<Name>Процент потерянных клиентов за период</Name>
+		<Description>Вычисляет процент потерянных заказчиков от общего числа заказчиков.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Number of Lost Customers&gt;&gt; / &lt;&lt;Total Number of Customers&gt;&gt; *100</ValueExpression>
+			<GoalExpression>0 /*This can be a fixed value if you know your Customer Turnover goal.*/</GoalExpression>
+			<StatusExpression>/*Lost Accounts per Period refers to the name of this KPI. If you change the name, change the reference in these functions as well.*/
+IIf
+( 
+   KPIValue( "Lost Accounts per Period" ) - KPIGoal( "Lost Accounts per Period" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Lost Accounts per Period" ) &lt;
+  ( KPIValue( "Lost Accounts per Period" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+       1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет процент потерянных заказчиков от общего числа заказчиков. Выражения состояния и тренда предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+	  <Name>Текучесть</Name>
+		<Description>Вычисляет отношение числа ушедших сотрудников к общему числу сотрудников.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Number of Employee Departures&gt;&gt; / &lt;&lt;Total Number of Employees&gt;&gt; *100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your percentage of customer turnover goal.*/</GoalExpression>
+			<StatusExpression>/*Turnover refers to the name of this KPI. If you change the name, change the reference in these functions as well.*/
+IIf
+( 
+   KPIValue( "Turnover" ) - KPIGoal( "Turnover" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Turnover" ) &lt;
+  ( KPIValue( "Turnover" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет отношение числа ушедших сотрудников к общему числу сотрудников. Выражения состояния и тренда предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Невыходы на работу</Name>
+		<Description>Вычисляет отношение потерянных рабочих дней к общему количеству рабочих дней.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Number of Days out&gt;&gt; / &lt;&lt;Number of Days in the Month&gt;&gt; *100</ValueExpression>
+			<GoalExpression>0</GoalExpression>
+			<StatusExpression>/*Absenteeism refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Absenteeism" ) - KPIGoal( "Absenteeism" ) &lt;=0, 1, -1
+)
+        </StatusExpression>
+        <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(  
+  KPIValue( "Absenteeism" ) &lt;
+  ( KPIValue( "Absenteeism" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+		</TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет отношение потерянных рабочих дней к общему количеству рабочих дней. Выражения состояния и тренда предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Учет частично занятых</Name>
+		<Description>Вычисляет процент частично занятых сотрудников от общего числа сотрудников.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Number of Part Time Employees&gt;&gt; / &lt;&lt;Total Number of Employees&gt;&gt; *100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Headcount Part Time/Employee Base goal.*/</GoalExpression>
+			<StatusExpression>/*Headcount Part Time/Employee Base refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Headcount Part Time/Employee Base" ) - KPIGoal( "Headcount Part Time/Employee Base" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Headcount Part Time/Employee Base " ) &lt;
+  ( KPIValue( "Headcount Part Time/Employee Base" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет процент частично занятых сотрудников от общего числа сотрудников. Выражения состояния и тренда предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+  <Template>
+    <Category>Кадры</Category>
+    <Name>Учет занятых полный рабочий день</Name>
+    <Description>Вычисляет процент сотрудников, занятых полный рабочий день, от общего числа сотрудников.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Number of Full Time Employees&gt;&gt; / &lt;&lt;Total number of Employees&gt;&gt; *100</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Headcount Full Time/Employee Base goal.*/</GoalExpression>
+      <StatusExpression>/*Headcount Full Time/Employee Base refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Headcount Full Time/Employee Base" ) - KPIGoal( "Headcount Full Time/Employee Base" ) &gt;=0, 1, -1
+)
+        </StatusExpression>
+        <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Headcount Full Time/Employee Base" ) &gt;
+  ( KPIValue( "Headcount Full Time/Employee Base" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Данный ключевой показатель эффективности (KPI) вычисляет процент сотрудников, занятых полный рабочий день, от общего числа сотрудников. Выражения состояния и тренда предполагают, что чем выше значение, тем лучше. Если это не так, то может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+  <Template>
+		<Category>Кадры</Category>
+		<Name>Средняя продолжительность работы</Name>
+		<Description>Вычисляет среднюю продолжительность работы на основе общего числа сотрудников, занятых как полный, так и неполный рабочий день.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Employment Duration&gt;&gt; / &lt;&lt;Total Number of Employees&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Average Length of Employment goal.*/</GoalExpression>
+			<StatusExpression>/*Average Length of Employment refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Average Length of Employment" ) - KPIGoal( "Average Length of Employment" ) &gt;=0, 1, -1
+)
+        </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Average Length of Employment" ) &gt;
+  ( KPIValue( "Average Length of Employment" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+	  </TrendExpression>
+			<Description>Данный ключевой показатель эффективности (KPI) вычисляет среднюю продолжительность работы на основе общего числа сотрудников, занятых как полный, так и неполный рабочий день. Выражения состояния и тренда предполагают, что чем выше значение, тем лучше. Если это не так, то может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Индекс удовлетворенности сотрудников</Name>
+		<Description>Отслеживает удовлетворенность сотрудников.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Employee Satisfaction Index&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Employee Satisfaction Index goal.*/</GoalExpression>
+			<StatusExpression>/*Employee Satisfaction Index refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Employee Satisfaction Index" ) - KPIGoal( "Employee Satisfaction Index" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Employee Satisfaction Index" ) &gt;
+  ( KPIValue( "Employee Satisfaction Index" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности отслеживает удовлетворенность сотрудников. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Стоимость обучения сотрудника</Name>
+		<Description>Вычисляет среднюю стоимость обучения одного сотрудника за последний год за исключением десяти процентов.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Training Cost&gt;&gt; / &lt;&lt;Total Number of Employees&gt;&gt;</ValueExpression>
+			<GoalExpression>0.9*
+( &lt;&lt;Training Cost&gt;&gt;, 
+  ParallelPeriod
+  (
+     [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+     1,
+     [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+  )
+)
+/
+( &lt;&lt;Total Number of Employees&gt;&gt;, 
+  ParallelPeriod
+  (
+     [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+    1,
+     [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+  )
+)
+      </GoalExpression>
+			<StatusExpression>/*Training Cost/Employee refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Training Cost/Employee" ) - KPIGoal( "Training Cost/Employee" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Training Cost/Employee" ) &lt;
+  ( KPIValue( "Training Cost/Employee" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности основан на средней стоимости обучения одного сотрудника за последний год за исключением десяти процентов. Выражения состояния и тренда также предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Время обучения сотрудника</Name>
+		<Description>Вычисляет среднее время обучения на одного сотрудника за последний год за исключением десяти процентов.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Training Hours&gt;&gt; / &lt;&lt;Total Number of Employees&gt;&gt;</ValueExpression>
+			<GoalExpression>0.9 * 
+( &lt;&lt;Training Hours&gt;&gt;, 
+  ParallelPeriod
+  (
+	 [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	 1,
+	 [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+  )
+)
+/
+( &lt;&lt;Total Number of Employees&gt;&gt;,
+  ParallelPeriod
+  (
+	 [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	 1,
+	 [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+  )
+)
+      </GoalExpression>
+			<StatusExpression>/*Training Hour/Employee refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Training Hour/Employee" ) - KPIGoal( "Training Hour/Employee" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Training Hour/Employee" ) &lt;
+  ( KPIValue( "Training Hour/Employee" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности основан на среднем времени обучения одного сотрудника за последний год за исключением десяти процентов. Выражения состояния и тренда также предполагают, что чем меньше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Кадры</Category>
+		<Name>Средний должностной оклад</Name>
+		<Description>Делит общий оклад всех сотрудников данной должности на число сотрудников данной должности. Этот ключевой показатель эффективности предполагает, что в списке должностей существует иерархия, и что эта иерархия отделена от измерения сотрудников.</Description>
+		<KPIContent>
+			<ValueExpression>(&lt;&lt;Salary&gt;&gt;,[&lt;&lt;Employee Dimension&gt;&gt;].[&lt;&lt;Employee Hierarchy&gt;&gt;].[&lt;&lt;Employee Hierarchy All Member&gt;&gt;] )/&lt;&lt;Total number of Employee&gt;&gt;</ValueExpression>
+			<GoalExpression>&lt;&lt;Target Average Salary per Job Title&gt;&gt;</GoalExpression>
+			<StatusExpression>/*Average Salary by Job title refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Average Salary by Job title" ) - KPIGoal( "Average Salary by Job title" ) &lt;=0, 1,- 1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Average Salary by Job title" ) &lt;
+  ( KPIValue( "Average Salary by Job title" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности делит общую сумму зарплат сотрудников в данной должности на количество таких сотрудников. Этот ключевой показатель эффективности предполагает, что существует иерархия, включающая список должностей, и эта иерархия отделена от измерения, содержащего сотрудников. Для каждой должности этот ключевой показатель эффективности подсчитывает общую сумму зарплат сотрудников, занимающих должность, и делит ее на их количество. Выражения состояния и тренда предполагают, что чем ниже полученное значение, тем лучше. Если это не правильно, можно заменить в этих выражениях знак "меньше" (&gt;) на знак "больше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Внутренние процессы</Category>
+		<Name>Процент своевременных поставок</Name>
+		<Description>Вычисляет процент своевременных поставок на основе отношения количества своевременных поставок к общему количеству поставок.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;On Time Delivery Count&gt;&gt; / &lt;&lt;Total Delivery Count&gt;&gt;</ValueExpression>
+			<GoalExpression>1 /* Here 1 represents an on-time delivery goal of 100%. This value can be changed if you have a different on-time delivery percentage goal.*/</GoalExpression>
+		<StatusExpression>/*On-Time Delivery Percentage refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "On-Time Delivery Percentage" ) - KPIGoal( "On-Time Delivery Percentage" ) &gt;=0, 1, -1
+)
+    </StatusExpression>
+    <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "On-Time Delivery Percentage" ) &gt;
+  ( KPIValue( "On-Time Delivery Percentage" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+    </TrendExpression>
+    <Description>Этот ключевой показатель эффективности вычисляет процент своевременных поставок на основе отношения количества своевременных поставок к общему количеству поставок. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Внутренние процессы</Category>
+		<Name>Процент несвоевременных поставок</Name>
+		<Description>Вычисляет процент несвоевременных поставок на основе отношения количества несвоевременных поставок к общему количеству поставок.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Late Delivery Count&gt;&gt; / &lt;&lt;Total Delivery Count&gt;&gt;</ValueExpression>
+			<GoalExpression>0 /* Here 0 represents a late delivery percentage goal of 0%. This value can be changed if you have a different late delivery percentage goal.*/</GoalExpression>
+		<StatusExpression>/*Late Delivery Percentage refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Late Delivery Percentage" ) - KPIGoal( "Late Delivery Percentage" ) &lt;=0, 1, -1
+)
+    </StatusExpression>
+    <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Late Delivery Percentage" ) &lt;
+  ( KPIValue( "Late Delivery Percentage" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+    </TrendExpression>
+    <Description>Этот ключевой показатель эффективности (КПЭ) вычисляет процент несвоевременных поставок по отношению к общему числу поставок. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может потребоваться заменить в этих выражениях знак &lt; sign by &gt;.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Внутренние процессы</Category>
+		<Name>Транспортные издержки или общая стоимость</Name>
+		<Description>Вычисляет процент транспортных издержек от общей стоимости готового товара.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Shipping Cost&gt;&gt; / ( &lt;&lt;Shipping Cost&gt;&gt;,[&lt;&lt;Product Dimension&gt;&gt;].[&lt;&lt;Product Hierarchy&gt;&gt;].[&lt;&lt;All Member&gt;&gt;] )</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Shipping Cost/Total Cost goal.*/</GoalExpression>
+			<StatusExpression>/*Shipping Cost/Total Cost refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Shipping Cost/Total Cost" ) - KPIGoal( "Shipping Cost/Total Cost" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Shipping Cost/Total Cost" ) &lt;
+  ( KPIValue( "Shipping Cost/Total Cost" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности (КПЭ) вычисляет процент транспортных издержек по отношению к итоговой стоимости готового товара. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может потребоваться заменить в этих выражениях знак &lt; на знак &gt;.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Внутренние процессы</Category>
+		<Name>Процент невыполненных заказов</Name>
+		<Description>Отслеживает показатель невыполненных заказов по каждому товару и региону.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Order Backlog&gt;&gt; / ( &lt;&lt;Order Backlog&gt;&gt;, Root( [&lt;&lt;Product Dimension&gt;&gt;] ), Root( [&lt;&lt;Region Dimension&gt;&gt;] ) )</ValueExpression>
+			<GoalExpression>0 /*0 represents an Order Backlog Percentage goal of 0%. This can be a fixed value if you know your Order Backlog Percent goal.*/</GoalExpression>
+			<StatusExpression>/*Order Backlog Percent refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Order Backlog Percent" ) - KPIGoal( "Order Backlog Percent" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Order Backlog Percent" ) &lt;
+  ( KPIValue( "Order Backlog Percent" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности (КПЭ) отслеживает показатель невыполненных заказов по каждому товару и региону. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может потребоваться заменить в этих выражениях знак &lt; sign by &gt;.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Экономическая добавленная стоимость (EVA)</Name>
+		<Description>Вычисляет меру финансовых результатов, показывающую реальную экономическую прибыльность организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Operating Profit After Tax&gt;&gt; – ( &lt;&lt;Capital&gt;&gt; * &lt;&lt;Cost of Capital&gt;&gt; )</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Economic Value Added (EVA) goal.*/
+&lt;&lt;EVA Goal&gt;&gt;
+			</GoalExpression>
+			<StatusExpression>/*Economic Value Added (EVA) refers to the name of this KPI. If you change the name, change the reference in these functions as well. */ 
+IIf
+(
+   KPIValue( "Economic Value Added (EVA)" ) - KPIGoal( "Economic Value Added (EVA)" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+			<TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Economic Value Added (EVA)" ) &gt; 
+  ( KPIValue( "Economic Value Added (EVA)" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+) 
+			</TrendExpression>
+			<Description>Этот ключевой показатель эффективности вычисляет меру финансовых результатов, показывающую реальную экономическую прибыльность организации. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+    <Name>Доля рынка</Name>
+		<Description>Вычисляет меру финансовых результатов, позволяющую отслеживать индекс доли рынка.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Sales&gt;&gt; / &lt;&lt;Industry Sales&gt;&gt; </ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Market Share goal.*/
+&lt;&lt;Market Share goal&gt;&gt;
+			</GoalExpression>
+			<StatusExpression>/*Market Share refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Market Share" ) - KPIGoal( "Market Share" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+			<TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Market Share" ) &gt; 
+  ( KPIValue( "Market Share" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+) </TrendExpression>
+			<Description>Этот ключевой показатель эффективности позволяет отслеживать индекс доли рынка. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Период погашения дебиторской задолженности (DSO)</Name>
+		<Description>Измеряет период погашения дебиторской задолженности.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Unit in stock quantity&gt;&gt;/&lt;&lt;Average sales per day&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Days of Sales Outstanding (DSO) goal.*/</GoalExpression>
+			<StatusExpression>/*Days of Sales Outstanding (DSO) refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Days of Sales Outstanding (DSO)" ) - KPIGoal( "Days of Sales Outstanding (DSO)" ) &lt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Days of Sales Outstanding (DSO)" )&lt;
+  ( KPIValue( "Days of Sales Outstanding (DSO)" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности (КПЭ) измеряет период погашения дебиторской задолженности. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может потребоваться заменить в этих выражениях знак &lt; sign by &gt;.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Процент продаж от продаж в отрасли</Name>
+		<Description>Отслеживает показатель продаж компании в сравнении с отраслью.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Sales&gt;&gt; / &lt;&lt;Industry Sales&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Sales/Industry Sales Percent goal.*/</GoalExpression>
+			<StatusExpression>/*Sales/Industry Sales Percent refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Sales/Industry Sales Percent" ) - KPIGoal( "Sales/Industry Sales Percent" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Sales/Industry Sales Percent" ) &gt;
+  ( KPIValue( "Sales/Industry Sales Percent" ),
+    ParallelPeriod
+    ( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности отслеживает показатель продаж компании в сравнении с отраслью. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Рост продаж относительно роста продаж в отрасли</Name>
+		<Description>Отслеживает результаты роста продаж компании в сравнении с ростом в отрасли.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Sales growth&gt;&gt; / &lt;&lt;Industry Sales growth&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Sales Growth vs. Industry Sales Growth goal.*/</GoalExpression>
+			<StatusExpression>/*Sales Growth vs. Industry Sales Growth refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Sales Growth vs. Industry Sales Growth" ) - KPIGoal( "Sales Growth vs. Industry Sales Growth" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Sales Growth vs. Industry Sales Growth" ) &gt;
+  ( KPIValue( "Sales Growth vs. Industry Sales Growth" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности отслеживает результаты роста продаж компании в сравнении с ростом в отрасли. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Бюджетное отклонение</Name>
+		<Description>Отслеживает отклонение фактических данных от заложенных в бюджет.</Description>
+		<KPIContent>
+			<ValueExpression>
+Case
+When IsEmpty
+     (
+       (
+          [Measures].[&lt;&lt;measure Name&gt;&gt;]
+          [&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;]
+       )
+     )
+Then "Not Budgeted"
+
+When [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].CurrentMember Is
+	 [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].[&lt;&lt;Expense Member&gt;&gt;]
+     Or
+     [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type Hierarchy&gt;&gt;].CurrentMember Is
+     [&lt;&lt;Account Dimension&gt;&gt;].[&lt;&lt;Account Type&gt;&gt;].[&lt;&lt;Liabilities Member&gt;&gt;]
+
+Then ( [Measures].[&lt;&lt;measure Name&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;] )
+	 -
+	 ( [Measures].[&lt;&lt;measure Name&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Actual Member&gt;&gt;] )
+
+Else ( [Measures].[&lt;&lt;measure Name&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Actual Member&gt;&gt;] )
+	 -
+	 ( [Measures].[&lt;&lt;measure Name&gt;&gt;],[&lt;&lt;Scenario Dimension&gt;&gt;].[&lt;&lt;Scenario Hierarchy&gt;&gt;].[&lt;&lt;Budget Member&gt;&gt;] )
+End
+    </ValueExpression>
+			<GoalExpression>0 /*0 represents the variance thresholds that can be tolerated. This value can be changed to any threshold that meets your business needs.*/</GoalExpression>
+		<StatusExpression>/*Budget Variance refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Budget Variance" )=0, 1, -1
+)
+    </StatusExpression>
+			<TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Budget Variance" ) &lt;
+  ( KPIValue( "Budget Variance" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+			<Description>Этот ключевой показатель эффективности (КПЭ) отслеживает отклонение фактических данных от данных, заложенных в бюджет. Выражение тренда также предполагает, что чем меньше значение, тем лучше. Если это не так, может потребоваться заменить в этих выражениях знак &lt; sign by &gt;.</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Чистый доход</Name>
+		<Description>Отслеживает результаты по счету чистого дохода.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Operating Profit&gt;&gt; + &lt;&lt;Other Incomes&gt;&gt; - &lt;&lt;Other Expenses&gt;&gt; - &lt;&lt;Taxes&gt;&gt; </ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Net Income goal, or this expression can be a measure or even the same expression as the Value expression if your cube contains data for actual and budget scenarios.*/</GoalExpression>
+		<StatusExpression>/*Net Income refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Net Income" ) - KPIGoal( "Net Income" )&gt;=0, 1, -1
+)
+        </StatusExpression>
+    <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Net Income" ) &gt;
+  ( KPIValue( "Net Income" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+    </TrendExpression>
+    <Description>Этот ключевой показатель эффективности отслеживает результаты по счету чистого дохода. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Прибыль на акцию</Name>
+		<Description>Вычисляет прибыль на акцию, т.е. доход, накапливаемый акционерами на каждую акцию, имеющуюся в их распоряжении.</Description>
+		<KPIContent>
+			<ValueExpression>( &lt;&lt;Net Income&gt;&gt; – &lt;&lt;Preferred Dividends&gt;&gt; ) / &lt;&lt;Weighted Average Common Stock Outstanding&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Earning Per Share (EPS) goal, or this expression can be a measure or even the same expression as the Value expression if your cube holds data for actual and budget scenarios.*/</GoalExpression>
+			<StatusExpression>/*Earnings Per Share refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Earnings Per Share" ) - KPIGoal( "Earnings Per Share" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Earnings Per Share" )&gt;
+  ( KPIValue( "Earnings Per Share" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+   ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет прибыль на акцию, т.е. доход, накапливаемый акционерами на каждую акцию, имеющуюся в их распоряжении. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Базовая прибыль на акцию</Name>
+		<Description>Вычисляет базовую прибыль на акцию, т.е. доход, накапливаемый акционерами как на каждую акцию, имеющуюся в их распоряжении, так и на любые эквиваленты обыкновенных акций.</Description>
+		<KPIContent>
+			<ValueExpression>(&lt;&lt;Net Income&gt;&gt; – &lt;&lt;Preferred Dividends&gt;&gt;) / (&lt;&lt;Weighted Average Common Stock Outstanding&gt;&gt; + &lt;&lt;Common Stock Equivalents&gt;&gt;)</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Basic Earnings Per Share goal, or this expression can be a measure or even the same expression as the Value expression if your cube hold data for actual and budget scenarios.*/</GoalExpression>
+			<StatusExpression>/*Basic Earnings Per Share refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Basic Earnings Per Share" ) - KPIGoal( "Basic Earnings Per Share" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Basic Earnings Per Share" ) &gt;
+  ( KPIValue( "Basic Earnings Per Share" ),
+    ParallelPeriod
+	(
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+   ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет базовую прибыль на акцию, т.е. доход, накапливаемый акционерами как на каждую акцию, имеющуюся в их распоряжении, так и на любые эквиваленты обыкновенных акций. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Разводненная прибыль на акцию</Name>
+		<Description>Вычисляет разводненную прибыль на акцию, т.е. доход, накапливаемый акционерами как на каждую акцию, имеющуюся в их распоряжении, так и на любые разводненные ценные бумаги.</Description>
+		<KPIContent>
+			<ValueExpression>(&lt;&lt;Net Income&gt;&gt; – &lt;&lt;Preferred Dividends&gt;&gt;) / (&lt;&lt;Weighted Average Common Stock Outstanding&gt;&gt; + &lt;&lt;Diluted Securities&gt;&gt;)</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Diluted Earnings Per Share goal, or this expression can be a measure or even the same expression as the Value expression if your cube hold data for actual and budget scenarios.*/</GoalExpression>
+			<StatusExpression>/*Diluted Earnings Per Share refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Diluted Earnings Per Share" ) - KPIGoal( "Diluted Earnings Per Share" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Diluted Earnings Per Share" ) &gt;
+  ( KPIValue( "Diluted Earnings Per Share" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+              </TrendExpression>
+              <Description>Этот ключевой показатель эффективности вычисляет разводненную прибыль на акцию, т.е. доход, накапливаемый акционерами как на каждую акцию, имеющуюся в их распоряжении, так и на любые разводненные ценные бумаги. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Отношение цены к прибыли</Name>
+		<Description>Вычисляет отношение цены к прибыли и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Market Price Per Share&gt;&gt;/&lt;&lt;Earnings Per Share&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your P/E Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*P/E Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "P/E Ratio" ) - KPIGoal( "P/E Ratio" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "P/E Ratio" )&gt;
+  ( KPIValue( "P/E Ratio" ),
+    ParallelPeriod
+    ( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет отношение цены к прибыли и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Отношение цены к продажам</Name>
+		<Description>Вычисляет отношение цены к продажам и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Price&gt;&gt; / &lt;&lt;Net Sales&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Price/Sales Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*Price/Sales Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Price/Sales Ratio" ) - KPIGoal( "Price/Sales Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Price/Sales Ratio" ) &gt;
+  ( KPIValue( "Price/Sales Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет отношение цены к продажам и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Отношение цены к денежному потоку</Name>
+		<Description>Вычисляет отношение цены к денежному потоку и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Price&gt;&gt; / &lt;&lt;Cash Flow&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Price/Sales Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*Price/Cash Flow Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Price/Cash Flow Ratio" ) - KPIGoal( "Price/Cash Flow Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Price/Cash Flow Ratio" )&gt;
+  ( KPIValue( "Price/Cash Flow Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет отношение цены к денежному потоку и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент ликвидности</Name>
+		<Description>Вычисляет коэффициент ликвидности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Этот показатель также позволяет определить, сохраняет ли фирма надлежащий уровень ликвидности.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Current Assets&gt;&gt; / &lt;&lt;Current Liabilities&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Liquidity Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*Liquidity Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Liquidity Ratio" ) - KPIGoal( "Liquidity Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Liquidity Ratio" ) &gt;
+  ( KPIValue( "Liquidity Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет коэффициент ликвидности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент быстрой ликвидности</Name>
+		<Description>Вычисляет коэффициент быстрой ликвидности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Этот показатель также позволяет сделать акцент на краткосрочной устойчивости (т.е. способности фирмы оставаться в бизнесе).</Description>
+		<KPIContent>
+			<ValueExpression>( &lt;&lt;Cash&gt;&gt; + &lt;&lt;Marketable Securities&gt;&gt; + &lt;&lt;Receivables&gt;&gt; ) / &lt;&lt;Current liabilities&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Quick Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*Quick Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Quick Ratio" ) - KPIGoal( "Quick Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Quick Ratio" ) &gt;
+  ( KPIValue( "Quick Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет коэффициент быстрой ликвидности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Участие акционеров</Name>
+		<Description>Вычисляет участие или капитал акционеров и отслеживает значение этого показателя в привязке к цели деятельности организации. Данное значение является итогом бухгалтерского баланса.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Total Assets&gt;&gt; - &lt;&lt;Total Liabilities&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Stockholders Equity goal.*/</GoalExpression>
+			<StatusExpression>/*Stockholders Equity refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Stockholders Equity" ) - KPIGoal( "Stockholders Equity" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Stockholders Equity" ) &gt;
+  ( KPIValue( "Stockholders Equity" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет участие или капитал акционеров и отслеживает значение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Балансовая стоимость на акцию</Name>
+		<Description>Вычисляет балансовую стоимость, приходящуюся на одну на акцию, и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>( &lt;&lt;Stockholders’ Equity&gt;&gt; – &lt;&lt;Preferred Stock&gt;&gt; ) / &lt;&lt;Common Stock Outstanding&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Book Value / Share goal.*/</GoalExpression>
+			<StatusExpression>/*Book Value / Share refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Book Value / Share" ) - KPIGoal( "Book Value / Share" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Book Value / Share" ) &gt;
+  ( KPIValue( "Book Value / Share" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет балансовую стоимость, приходящуюся на одну акцию, и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Дивидендный доход</Name>
+		<Description>Вычисляет дивидендный доход и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Dividends Per Share&gt;&gt; / &lt;&lt;Market Price Per Share&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Dividend Yield goal.*/</GoalExpression>
+			<StatusExpression>/*Dividend Yield refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Dividend Yield" ) - KPIGoal( "Dividend Yield" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Dividend Yield" ) &gt;
+  ( KPIValue( "Dividend Yield" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет дивидендный доход и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Норма выплаты дивидендов</Name>
+		<Description>Вычисляет норму выплаты дивидендов и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Dividends Per Share&gt;&gt; / &lt;&lt;Earnings Per Share&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Dividend Payout goal.*/</GoalExpression>
+			<StatusExpression>/*Dividend Payout refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Dividend Payout" ) - KPIGoal( "Dividend Payout" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Dividend Payout" ) &gt;
+  ( KPIValue( "Dividend Payout" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет норму выплаты дивидендов и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент оборачиваемости дебиторской задолженности</Name>
+		<Description>Вычисляет коэффициент оборачиваемости дебиторской задолженности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Этот индикатор измеряет эффективность погашения дебиторской задолженности.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Credit Sales&gt;&gt; / &lt;&lt;Average Receivables Balance&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Receivables Turnover Ratio goal.*/</GoalExpression>
+			<StatusExpression>/*Receivables Turnover Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Receivables Turnover Ratio" ) - KPIGoal( "Receivables Turnover Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Receivables Turnover Ratio" ) &gt;
+  ( KPIValue( "Receivables Turnover Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет коэффициент оборачиваемости дебиторской задолженности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+  <Template>
+    <Category>Финансы</Category>
+    <Name>Период погашения дебиторской задолженности</Name>
+    <Description>Вычисляет период погашения дебиторской задолженности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Период погашения дебиторской задолженности - это средний срок дебиторской задолженности (т.е. средняя продолжительность погашения дебиторской задолженности).</Description>
+    <KPIContent>
+      <ValueExpression>365 / &lt;&lt;Receivables Turnover ratio&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Days Receivables goal.*/</GoalExpression>
+      <StatusExpression>/*Days Receivables refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Days Receivables" ) - KPIGoal( "Days Receivables" ) &lt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Days Receivables" ) &lt;
+  ( KPIValue( "Days Receivables" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет период погашения дебиторской задолженности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+  <Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент оборачиваемости запасов</Name>
+    <Description>Вычисляет коэффициент оборачиваемости запасов и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Этот индикатор измеряет эффективность хранения небольших запасов на складе.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Cost of Goods Sold&gt;&gt; / &lt;&lt;Average Inventory Balance&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Inventory Turnover Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Inventory Turnover Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Inventory Turnover Ratio" ) - KPIGoal( "Inventory Turnover Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Inventory Turnover Ratio" ) &gt;
+  ( KPIValue( "Inventory Turnover Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+          </TrendExpression>
+          <Description>Этот ключевой показатель эффективности вычисляет коэффициент оборачиваемости запасов и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+  <Template>
+    <Category>Финансы</Category>
+    <Name>Период оборота запасов</Name>
+    <Description>Вычисляет период оборота запасов и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Период оборота запасов - это средний срок запасов.</Description>
+    <KPIContent>
+      <ValueExpression>365 / &lt;&lt;Inventory Turnover ratio&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Days Inventory goal.*/</GoalExpression>
+      <StatusExpression>/*Days Inventory refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Days Inventory" ) - KPIGoal( "Days Inventory" ) &lt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Days Inventory" ) &lt;
+  ( KPIValue( "Days Inventory" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет период оборота запасов и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Оборачиваемость активов</Name>
+		<Description>Вычисляет коэффициент оборачиваемости активов и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Sales&gt;&gt; / &lt;&lt;Average Total Assets&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Asset Turnover goal.*/</GoalExpression>
+      <StatusExpression>/*Asset Turnover refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Asset Turnover" ) - KPIGoal( "Asset Turnover" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(  
+  KPIValue( "Asset Turnover" ) &gt;
+  ( KPIValue( "Asset Turnover" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+          </TrendExpression>
+          <Description>Этот ключевой показатель эффективности вычисляет коэффициент оборачиваемости активов и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Процентное покрытие</Name>
+		<Description>Вычисляет коэффициент процентного покрытия и отслеживает поведение этого коэффициента в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Income Before Interest And Taxes&gt;&gt; / &lt;&lt;Interest Expense&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Interest Coverage goal.*/</GoalExpression>
+      <StatusExpression>/*Interest Coverage refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Interest Coverage" ) - KPIGoal( "Interest Coverage" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Interest Coverage" ) &gt;
+  ( KPIValue( "Interest Coverage" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+          </TrendExpression>
+          <Description>Этот ключевой показатель эффективности вычисляет коэффициент процентного покрытия и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент платежеспособности (отношение собственных и заемных средств)</Name>
+		<Description>Вычисляет коэффициент платежеспособности (отношение собственных и заемных средств) и отслеживает поведение этого отношения в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Total Debt&gt;&gt; / &lt;&lt;Total Assets&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Debt Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Debt Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Debt Ratio" ) - KPIGoal( "Debt Ratio" ) &lt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Debt Ratio" ) &lt;
+  ( KPIValue( "Debt Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+          </TrendExpression>
+          <Description>Этот ключевой показатель эффективности вычисляет коэффициент платежеспособности (отношение собственных и заемных средств) и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент задолженности (отношение обязательств к собственному капиталу)</Name>
+		<Description>
+      Вычисляет коэффициент задолженности (отношение обязательств к собственному капиталу) и отслеживает поведение этого отношения в привязке к цели деятельности организации. Этот коэффициент определяет, не перенапрягается ли фирма из-за слишком интенсивного применения финансовых рычагов. Имеются ли у нее обязательства по выплатам по капиталу и процентам, превышающие ее платежеспособность, и не только сегодня, но и в будущем? Этот коэффициент свидетельствует о наличии защитного резерва, обеспечиваемого кредиторам собственным капиталом владельцев.
+    </Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Total liabilities&gt;&gt; / (&lt;&lt;Total liabilities&gt;&gt; + &lt;&lt;Stockholders’ equity&gt;&gt;)</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Debt to Equity Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Debt to Equity Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Debt to Equity Ratio" ) - KPIGoal( "Debt to Equity Ratio" ) &lt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Debt to Equity Ratio" ) &lt;
+  ( KPIValue( "Debt to Equity Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет коэффициент задолженности (отношение обязательств к собственному капиталу) и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда предполагается, что меньшее значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "меньше" (&lt;) на знак "больше" (&gt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Полученные проценты</Name>
+		<Description>Вычисляет полученные проценты и отслеживает поведение этого показателя в привязке к цели деятельности организации.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Earnings before interest and Taxes&gt;&gt; / &lt;&lt;Interest Expense&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Interest Earned Over Time goal.*/</GoalExpression>
+      <StatusExpression>/*Interest Earned Over Time refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Interest Earned Over Time" ) - KPIGoal( "Interest Earned Over Time" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+(
+  KPIValue( "Interest Earned Over Time" ) &gt;
+  ( KPIValue( "Interest Earned Over Time" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет полученные проценты и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Денежный поток к активам</Name>
+		<Description>Вычисляет отношение денежного потока к активам и отслеживает поведение этого отношения в привязке к цели деятельности организации. Этот индикатор измеряет способность активов создавать операционные денежные потоки.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Cash flow from operating activities&gt;&gt; / &lt;&lt;average total assets&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Cash Flow to Assets Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Cash Flow to Assets Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Cash Flow to Assets Ratio" ) - KPIGoal( "Cash Flow to Assets Ratio" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Cash Flow to Assets Ratio" ) &gt;
+  ( KPIValue( "Cash Flow to Assets Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                  </TrendExpression>
+                  <Description>Этот ключевой показатель эффективности вычисляет отношение денежного потока к активам и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Отношение потока наличности к продажам</Name>
+		<Description>Вычисляет отношение потока наличности к продажам и отслеживает поведение этого отношения в привязке к цели деятельности организации. Этот индикатор измеряет способность продаж создавать операционные денежные потоки.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Cash flow from operating activities&gt;&gt; / &lt;&lt;Sales&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Cash Flow to Sales Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Cash Flow to Sales Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Cash Flow to Sales Ratio" ) - KPIGoal( "Cash Flow to Sales Ratio" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Cash Flow to Sales Ratio" ) &gt;
+  ( KPIValue( "Cash Flow to Sales Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                        </TrendExpression>
+                        <Description>Этот ключевой показатель эффективности вычисляет отношение потока наличности к продажам и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+  <Template>
+    <Category>Финансы</Category>
+    <Name>Отношение денежного потока к капитальным затратам</Name>
+    <Description>Вычисляет отношение денежного потока к капитальным затратам и отслеживает поведение этого отношения в привязке к цели деятельности организации. Этот индикатор измеряет способность компании поддерживать здания, сооружения и оборудование за счет наличных от текущей деятельности, а не займов или выпуска акций.</Description>
+    <KPIContent>
+      <ValueExpression>( &lt;&lt;Net Cash Flow from Operating Activities&gt;&gt;-&lt;&lt;Dividends&gt;&gt; ) / &lt;&lt;Expenditures for Plant and Equipment&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Cash Flow to Capital Expenditures Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Cash Flow to Capital Expenditures refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Cash Flow to Capital Expenditures Ratio" ) - KPIGoal( "Cash Flow to Capital Expenditures Ratio" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Cash Flow to Capital Expenditures Ratio" ) &gt;
+  ( KPIValue( "Cash Flow to Capital Expenditures Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет отношение денежного потока к капитальным затратам и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+    </KPIContent>
+    <Type>KPI</Type>
+  </Template>
+  <Template>
+		<Category>Финансы</Category>
+		<Name>Отношение потока наличности к общему долгу</Name>
+		<Description>Вычисляет отношение потока наличности к общему долгу и отслеживает поведение этого отношения в привязке к цели деятельности организации. Этот индикатор измеряет способность фирмы платить по своим долгам. Он помогает при прогнозировании банкротства.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Cash flow from operating activities&gt;&gt; / &lt;&lt;Total liabilities&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Cash Flow to Total Debt Ratio goal.*/</GoalExpression>
+      <StatusExpression>/*Cash Flow to Total Debt Ratio refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Cash Flow to Total Debt Ratio" ) - KPIGoal( "Cash Flow to Total Debt Ratio" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Cash Flow to Total Debt Ratio" ) &gt;
+  ( KPIValue( "Cash Flow to Total Debt Ratio" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                          </TrendExpression>
+                          <Description>Этот ключевой показатель эффективности вычисляет отношение потока наличности к общему долгу и отслеживает поведение этого отношения в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Доходность по денежному потоку</Name>
+		<Description>Вычисляет доходность по денежному потоку и отслеживает поведение этого показателя в привязке к цели деятельности организации. Этот показатель измеряет способность компании создавать операционные денежные потоки во взаимосвязи с чистым доходом.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Cash flow from operating activities&gt;&gt; / &lt;&lt;Net Income&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Cash Flow Yield goal.*/</GoalExpression>
+      <StatusExpression>/*Cash Flow Yield refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Cash Flow Yield" ) - KPIGoal( "Cash Flow Yield" ) &gt;=0, 1, -1
+)
+            </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Cash Flow Yield" ) &gt;
+  ( KPIValue( "Cash Flow Yield" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+       1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                          </TrendExpression>
+                          <Description>Этот ключевой показатель эффективности вычисляет доходность по денежному потоку и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Нематериальные активы</Name>
+		<Description>Вычисляет стоимость нематериальных активов компании и отслеживает поведение этого показателя в привязке к цели деятельности организации. Этот ключевой показатель эффективности представляет стоимость имени и репутации компании, ее отношений с заказчиками, а также других факторов, которые могут привести к получению будущих доходов больше обычного.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Goodwill&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Goodwill goal.*/</GoalExpression>
+      <StatusExpression>/*Goodwill refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Goodwill" ) - KPIGoal( "Goodwill" ) &gt;=0, 1, -1
+)
+          </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Goodwill" )&gt;
+  ( KPIValue( "Goodwill" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+                              </TrendExpression>
+                              <Description>Этот ключевой показатель эффективности вычисляет стоимость нематериальных активов компании и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент валовой прибыли</Name>
+		<Description>Вычисляет коэффициент валовой прибыли и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Коэффициент валовой прибыли получается делением валовой прибыли на чистую выручку от продаж.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Gross Profit&gt;&gt; / &lt;&lt;Net Sales&gt;&gt;*100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Gross Profit Margin goal.*/</GoalExpression>
+			<StatusExpression>/*Gross Profit Margin refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Gross Profit Margin" ) - KPIGoal( "Gross Profit Margin" )&gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Gross Profit Margin" ) &gt;
+  ( KPIValue( "Gross Profit Margin" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет коэффициент валовой прибыли и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Коэффициент прибыльности</Name>
+		<Description>Вычисляет коэффициент прибыльности и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Коэффициент прибыльности, также называемый чистой нормой прибыли, рассчитывается делением чистой прибыли на чистую выручку от продаж. Выраженное в процентах значение определяет, какая часть вырученного рубля вернется в чистом доходе.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Income&gt;&gt; / &lt;&lt;Net Sales&gt;&gt;*100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Net Profit Margin goal.*/</GoalExpression>
+			<StatusExpression>/*Net Profit Margin refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Net Profit Margin" ) - KPIGoal( "Net Profit Margin" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Net Profit Margin" ) &gt;
+  ( KPIValue( "Net Profit Margin" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет коэффициент прибыльности и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Операционная рентабельность</Name>
+		<Description>Вычисляет операционную рентабельность и отслеживает поведение этого показателя в привязке к цели деятельности организации. Операционная рентабельность равна операционному доходу, деленному на продажи.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Operating Income&gt;&gt; / &lt;&lt;Sales&gt;&gt;*100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Operating Margin goal.*/</GoalExpression>
+			<StatusExpression>/*Operating Margin refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Operating Margin" ) - KPIGoal( "Operating Margin" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+Iif
+(
+  KPIValue( "Operating Margin" ) &gt;
+  ( KPIValue( "Operating Margin" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет операционную рентабельность и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Маржа по балансовой прибыли</Name>
+		<Description>Вычисляет маржу по балансовой прибыли и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. Маржа по балансовой прибыли рассчитывается делением дохода до налогообложения на продажи.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Income Before Tax&gt;&gt; / &lt;&lt;Sales&gt;&gt;*100</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Pre-Tax Margin goal.*/</GoalExpression>
+			<StatusExpression>/*Pre-Tax Margin refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+Iif
+(
+   KPIValue( "Pre-Tax Margin" ) - KPIGoal( "Pre-Tax Margin" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+Iif
+(
+  KPIValue( "Pre-Tax Margin" ) &gt;
+  ( KPIValue( "Pre-Tax Margin" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет маржу по балансовой прибыли и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Доходность основных фондов</Name>
+		<Description>Вычисляет доходность основных фондов и отслеживает поведение этого отношения в привязке к цели деятельности организации. Доходность основных фондов вычисляется делением чистого дохода на совокупные активы.</Description>
+		<KPIContent>
+			<ValueExpression>&lt;&lt;Net Income&gt;&gt; / &lt;&lt;Total Assets&gt;&gt;</ValueExpression>
+			<GoalExpression>/*This can be a fixed value if you know your Return On Assets goal.*/</GoalExpression>
+			<StatusExpression>/*Return On Assets refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Return On Assets" ) - KPIGoal( "Return On Assets" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Return On Assets" ) &gt;
+  ( KPIValue( "Return On Assets" ),
+    ParallelPeriod
+	(  
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет доходность основных фондов и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Рентабельность собственного капитала</Name>
+		<Description>Вычисляет коэффициент рентабельности собственного капитала и отслеживает поведение этого отношения в привязке к цели деятельности организации. Рентабельность собственного капитала вычисляется делением чистого дохода на собственный капитал.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Net Income&gt;&gt; / &lt;&lt;Stockholders’ equity&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Return On Equity goal.*/</GoalExpression>
+      <StatusExpression>/*Return On Equity refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Return On Equity" ) - KPIGoal( "Return On Equity" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Return On Equity" ) &gt;
+  ( KPIValue( "Return On Equity" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет коэффициент рентабельности собственного капитала и отслеживает поведение этого коэффициента в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Остаточная прибыль</Name>
+		<Description>Вычисляет сумму денежных средств, остающуюся после выплаты компанией всех обычных и обязательных долгов.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Project Profit&gt;&gt; - (&lt;&lt;Amount of Assets investments required&gt;&gt; * &lt;&lt;ROA Rate&gt;&gt;)</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Residual Income goal.*/</GoalExpression>
+      <StatusExpression>/*Residual Income refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+(
+   KPIValue( "Residual Income" ) - KPIGoal( "Residual Income" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Residual Income" ) &gt;
+  ( KPIValue( "Residual Income" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+      </TrendExpression>
+      <Description>Этот ключевой показатель эффективности вычисляет сумму денежных средств, остающуюся после выплаты компанией всех обычных и обязательных долгов. Выражения состояния и тренда предполагают, что чем больше значение, тем лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Выручка на одного сотрудника</Name>
+		<Description>Вычисляет выручку на одного сотрудника и отслеживает поведение этого показателя в привязке к цели деятельности организации.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Net Sales&gt;&gt; / &lt;&lt;Total Employee Count&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Revenue Per Employee goal.*/</GoalExpression>
+      <StatusExpression>/*Revenue Per Employee refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Revenue Per Employee" ) - KPIGoal( "Revenue Per Employee" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Revenue Per Employee" ) &gt;
+  ( KPIValue( "Revenue Per Employee" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+          </TrendExpression>
+          <Description>Этот ключевой показатель эффективности вычисляет выручку на одного сотрудника и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+	<Template>
+		<Category>Финансы</Category>
+		<Name>Доход на одного сотрудника</Name>
+		<Description>Вычисляет доход на одного сотрудника и отслеживает поведение этого показателя в привязке к цели деятельности организации.</Description>
+    <KPIContent>
+      <ValueExpression>&lt;&lt;Net Income&gt;&gt; / &lt;&lt;Total Employee Count&gt;&gt;</ValueExpression>
+      <GoalExpression>/*This can be a fixed value if you know your Income Per Employee goal.*/</GoalExpression>
+      <StatusExpression>/*Income Per Employee refers to the name of this KPI. If you change the name, change the reference in these functions as well. */
+IIf
+( 
+   KPIValue( "Income Per Employee" ) - KPIGoal( "Income Per Employee" ) &gt;=0, 1, -1
+)
+      </StatusExpression>
+      <TrendExpression>/*The periodicity of this trend comparison is defined by the level at which the ParallelPeriod is evaluated.*/
+IIf
+( 
+  KPIValue( "Income Per Employee" ) &gt;
+  ( KPIValue( "Income Per Employee" ),
+    ParallelPeriod
+	( 
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].[&lt;&lt;Time Year Level Name&gt;&gt;],
+	   1,
+	   [&lt;&lt;Time Dimension Name&gt;&gt;].[&lt;&lt;Time Hierarchy Name&gt;&gt;].CurrentMember
+	)
+  ), 1, -1
+)
+            </TrendExpression>
+            <Description>Этот ключевой показатель эффективности вычисляет доход на одного сотрудника и отслеживает поведение этого показателя в привязке к цели деятельности организации. В выражениях состояния и тренда также предполагается, что более высокое значение лучше. Если это не так, может понадобиться заменить в этих выражениях знак "больше" (&gt;) на знак "меньше" (&lt;).</Description>
+		</KPIContent>
+		<Type>KPI</Type>
+	</Template>
+</MDXTemplates>

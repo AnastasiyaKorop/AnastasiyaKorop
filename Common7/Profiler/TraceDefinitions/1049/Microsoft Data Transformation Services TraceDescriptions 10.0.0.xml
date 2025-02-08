@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EventColumnDescriptions xmlns="http://tempuri.org/xmlfile.xsd">
+    <_locDefinition>
+    	<_locDefault _loc="locNone"/> 
+    	<_locTag _loc="locData">DESCRIPTION</_locTag> 
+        <_locTag _loc="locData">BESTPRACTICE</_locTag> 
+    </_locDefinition>
+    <EVENTCATEGORIESLIST>
+        <EVENTCATEGORY>
+            <NAME>Execution</NAME>
+            <DESCRIPTION>Сбор классов событий выполнения пакета.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENTCATEGORY>
+     </EVENTCATEGORIESLIST>
+    <EVENTLIST>
+        <EVENT>
+            <ID>1</ID>
+            <DESCRIPTION>Собирает все события PreExecute с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>2</ID>
+            <DESCRIPTION>Собирает все события PostExecute с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>3</ID>
+            <DESCRIPTION>Собирает все события PreValidate с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>4</ID>
+            <DESCRIPTION>Собирает все события PostValidate с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>5</ID>
+            <DESCRIPTION>Собирает все события Warning с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>6</ID>
+            <DESCRIPTION>Собирает все события Error с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>7</ID>
+            <DESCRIPTION>Собирает все события TaskFaield с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>8</ID>
+            <DESCRIPTION>Собирает все события Progress с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>9</ID>
+            <DESCRIPTION>Собирает все события QueryCancel с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>10</ID>
+            <DESCRIPTION>Собирает все события ExecStatusChanged с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>11</ID>
+            <DESCRIPTION>Собирает все события VariableValueChanged с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>12</ID>
+            <DESCRIPTION>Собирает все события CustomEvent с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+        <EVENT>
+            <ID>13</ID>
+            <DESCRIPTION>Собирает все события User с начала трассировки, например созданные перед выполнением задач и т.п.</DESCRIPTION>
+            <BESTPRACTICE>
+            </BESTPRACTICE>
+        </EVENT>
+    </EVENTLIST>
+    <COLUMNLIST>
+		<COLUMN>
+			<ID>1</ID>
+			<DESCRIPTION>Класс этого события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>
+		<COLUMN>
+			<ID>26</ID>
+			<DESCRIPTION>Компьютер, создавший это событие</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>
+		<COLUMN>
+			<ID>50</ID>
+			<DESCRIPTION>Указанное пользователем имя события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>
+		<COLUMN>
+			<ID>51</ID>
+			<DESCRIPTION>Удостоверение пользователя, вызвавшего это событие</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>
+		<COLUMN>
+			<ID>52</ID>
+			<DESCRIPTION>Имя источника этого события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>53</ID>
+			<DESCRIPTION>Глобальный уникальный идентификатор источника этого события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>54</ID>
+			<DESCRIPTION>Глобальный уникальный идентификатор конкретного исполнения пакета</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>55</ID>
+			<DESCRIPTION>Время начала этого события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>56</ID>
+			<DESCRIPTION>Время окончания этого события</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>57</ID>
+			<DESCRIPTION>Код данных, связанный с этим событием</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>58</ID>
+			<DESCRIPTION>Байты данных, связанные с этим событием</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+		<COLUMN>
+			<ID>59</ID>
+			<DESCRIPTION>Сообщение, связанное с этим событием</DESCRIPTION>
+			<BESTPRACTICE>
+			</BESTPRACTICE>
+		</COLUMN>		
+    </COLUMNLIST>
+</EventColumnDescriptions>

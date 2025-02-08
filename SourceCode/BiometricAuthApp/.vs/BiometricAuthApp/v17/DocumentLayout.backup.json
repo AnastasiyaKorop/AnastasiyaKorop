@@ -1,0 +1,406 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\biometricauthapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:biometricauthapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\customencryptservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\customencryptservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\filesecurityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\filesecurityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\facerecognitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\facerecognitionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\fileskey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\fileskey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\encodekey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\encodekey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\face.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\face.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\biometricdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\biometricdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\properties\\publishprofiles\\clickonceprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:properties\\publishprofiles\\clickonceprofile.pubxml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\views\\useremployeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:views\\useremployeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\views\\addclientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:views\\addclientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\proj\\sourcecode\\biometricauthapp\\views\\employeesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:views\\employeesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\views\\useremployeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1431AE3A-D91C-46C7-B524-1B781C81C80E}|BiometricAuthApp.csproj|solutionrelative:views\\useremployeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1396,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BiometricAuthApp.csproj",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\BiometricAuthApp.csproj",
+              "RelativeDocumentMoniker": "BiometricAuthApp.csproj",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\BiometricAuthApp.csproj",
+              "RelativeToolTip": "BiometricAuthApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-15T11:08:13.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FileSecurityService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\FileSecurityService.cs",
+              "RelativeDocumentMoniker": "Services\\FileSecurityService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\FileSecurityService.cs",
+              "RelativeToolTip": "Services\\FileSecurityService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAYwF4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T15:11:28.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\EmployeeService.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T10:25:52.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomEncryptService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\CustomEncryptService.cs",
+              "RelativeDocumentMoniker": "Services\\CustomEncryptService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\CustomEncryptService.cs",
+              "RelativeToolTip": "Services\\CustomEncryptService.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAwJYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:07:11.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FaceRecognitionService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\FaceRecognitionService.cs",
+              "RelativeDocumentMoniker": "Services\\FaceRecognitionService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\FaceRecognitionService.cs",
+              "RelativeToolTip": "Services\\FaceRecognitionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T11:46:06.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClientService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\ClientService.cs",
+              "RelativeDocumentMoniker": "Services\\ClientService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\ClientService.cs",
+              "RelativeToolTip": "Services\\ClientService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T05:35:09.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T11:51:17.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FilesKey.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\FilesKey.cs",
+              "RelativeDocumentMoniker": "Models\\FilesKey.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\FilesKey.cs",
+              "RelativeToolTip": "Models\\FilesKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T14:30:02.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EncodeKey.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\EncodeKey.cs",
+              "RelativeDocumentMoniker": "Models\\EncodeKey.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\EncodeKey.cs",
+              "RelativeToolTip": "Models\\EncodeKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T14:30:00.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Face.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Face.cs",
+              "RelativeDocumentMoniker": "Models\\Face.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Face.cs",
+              "RelativeToolTip": "Models\\Face.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:06:59.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Employee.cs",
+              "RelativeToolTip": "Models\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:06:39.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Log.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Log.cs",
+              "RelativeDocumentMoniker": "Models\\Log.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Log.cs",
+              "RelativeToolTip": "Models\\Log.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:13:11.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BiometricData.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\BiometricData.cs",
+              "RelativeDocumentMoniker": "Models\\BiometricData.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\BiometricData.cs",
+              "RelativeToolTip": "Models\\BiometricData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:13:04.166Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Client.cs",
+              "RelativeDocumentMoniker": "Models\\Client.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Models\\Client.cs",
+              "RelativeToolTip": "Models\\Client.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:05:33.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:11:36.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-01-09T11:49:50.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ClickOnceProfile.pubxml",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Properties\\PublishProfiles\\ClickOnceProfile.pubxml",
+              "RelativeDocumentMoniker": "Properties\\PublishProfiles\\ClickOnceProfile.pubxml",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Properties\\PublishProfiles\\ClickOnceProfile.pubxml",
+              "RelativeToolTip": "Properties\\PublishProfiles\\ClickOnceProfile.pubxml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-01-09T11:49:45.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Repositories\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Repositories\\EmployeeRepository.cs",
+              "RelativeToolTip": "Repositories\\EmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T10:26:30.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Config.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Config.cs",
+              "RelativeDocumentMoniker": "Config.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Config.cs",
+              "RelativeToolTip": "Config.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:24:55.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserEmployeeForm.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\UserEmployeeForm.cs",
+              "RelativeDocumentMoniker": "Views\\UserEmployeeForm.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\UserEmployeeForm.cs",
+              "RelativeToolTip": "Views\\UserEmployeeForm.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAIwIYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T07:09:14.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UserEmployeeForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\UserEmployeeForm.cs",
+              "RelativeDocumentMoniker": "Views\\UserEmployeeForm.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\UserEmployeeForm.cs [Design]",
+              "RelativeToolTip": "Views\\UserEmployeeForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T06:48:16.206Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AddClientForm.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\AddClientForm.cs",
+              "RelativeDocumentMoniker": "Views\\AddClientForm.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\AddClientForm.cs",
+              "RelativeToolTip": "Views\\AddClientForm.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAwwCsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T05:35:09.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EmployeesForm.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\EmployeesForm.cs",
+              "RelativeDocumentMoniker": "Views\\EmployeesForm.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Views\\EmployeesForm.cs",
+              "RelativeToolTip": "Views\\EmployeesForm.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAwwP0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T05:35:09.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ClientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Repositories\\ClientRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ClientRepository.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\proj\\SourceCode\\BiometricAuthApp\\Repositories\\ClientRepository.cs",
+              "RelativeToolTip": "Repositories\\ClientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T05:35:09.722Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

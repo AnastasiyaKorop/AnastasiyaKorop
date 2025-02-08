@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MDXFunctions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/MDXFunctions">
+  <_locDefinition>
+    <_locDefault _loc="locNone"/>
+    <_locTag _loc="locData">Category</_locTag>
+    <_locTag _loc="locData">Description</_locTag>
+  </_locDefinition>
+  <Function>
+    <Name>ADDCALCULATEDMEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, созданный путем добавления вычисляемых элементов в указанный набор.</Description>
+    <Template>ADDCALCULATEDMEMBERS( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>AGGREGATE</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает значение, вычисленное с помощью соответствующей агрегатной функции, основанной на типе агрегата элемента.</Description>
+    <Template>AGGREGATE( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>ALLMEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, содержащий все элементы уровня, включая вычисляемые.</Description>
+    <Template>«Level».ALLMEMBERS</Template>
+  </Function>
+  <Function>
+    <Name>ALLMEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, содержащий все элементы иерархии, включая вычисляемые.</Description>
+    <Template>«Hierarchy».ALLMEMBERS</Template>
+  </Function>
+  <Function>
+    <Name>ANCESTOR</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает предка элемента на указанном уровне.</Description>
+    <Template>ANCESTOR( «Member», «Level» )</Template>
+  </Function>
+  <Function>
+    <Name>ANCESTOR</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает предка элемента на указанном удалении в иерархии.</Description>
+    <Template>ANCESTOR( «Member», «Distance» )</Template>
+  </Function>
+  <Function>
+    <Name>ANCESTORS</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает набор всех предков элемента на указанном удалении вверх от элемента в иерархии.</Description>
+    <Template>ANCESTORS( «Member», «Distance» )</Template>
+  </Function>
+  <Function>
+    <Name>ANCESTORS</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает набор всех предков элемента на указанном уровне.</Description>
+    <Template>ANCESTORS( «Member», «Level» )</Template>
+  </Function>
+  <Function>
+    <Name>ASCENDANTS</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает набор предков элемента.</Description>
+    <Template>ASCENDANTS( «Member» )</Template>
+  </Function>
+  <Function>
+    <Name>AVG</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает среднее значение числового выражения, рассчитанного для набора.</Description>
+    <Template>AVG( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>AXIS</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает набор, определенный на оси.</Description>
+    <Template>AXIS( «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>BOTTOMNCOUNT</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает заданное количество элементов из нижней части набора, выполнив по выбору предварительную сортировку набора.</Description>
+    <Template>BOTTOMNCOUNT( «Set», «Count»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>BOTTOMPERCENT</Name>
+    <Category>Набор</Category>
+    <Description>Сортирует набор и возвращает указанное количество самых нижних элементов, совокупное значение которых не меньше указанного процента.</Description>
+    <Template>BOTTOMPERCENT( «Set», «Percentage», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>BOTTOMSUM</Name>
+    <Category>Набор</Category>
+    <Description>Сортирует набор и возвращает указанное количество самых нижних элементов, совокупное значение которых не меньше указанного значения.</Description>
+    <Template>BOTTOMSUM( «Set», «Value», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>CALCULATIONCURRENTPASS</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает текущий этап вычисления куба для указанного контекста запроса.</Description>
+    <Template>CALCULATIONCURRENTPASS</Template>
+  </Function>
+  <Function>
+    <Name>CALCULATIONPASSVALUE</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает значение числового многомерного выражения, вычисленное для указанного этапа вычисления куба.</Description>
+    <Template>CALCULATIONPASSVALUE( «Numeric Expression», «Pass Value»[[, «Access Flag»], ALL] )</Template>
+  </Function>
+  <Function>
+    <Name>CHILDREN</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает потомков элемента.</Description>
+    <Template>«Member».CHILDREN</Template>
+  </Function>
+  <Function>
+    <Name>CLOSINGPERIOD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает последний элемент среди потомков элемента на указанном уровне.</Description>
+    <Template>CLOSINGPERIOD( [«Level»[, «Member»] ] )</Template>
+  </Function>
+  <Function>
+    <Name>COALESCEEMPTY</Name>
+    <Category>Статистика</Category>
+    <Description>Объединяет значение пустой ячейки с числом.</Description>
+    <Template>COALESCEEMPTY( «Numeric Expression»[, «Numeric Expression»...] )</Template>
+  </Function>
+  <Function>
+    <Name>CORRELATION</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает корреляцию двух рядов, рассчитанных для набора.</Description>
+    <Template>CORRELATION( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>DIMENSIONS.COUNT</Name>
+    <Category>Метаданные</Category>
+    <Description>Подсчитывает количество иерархий в кубе.</Description>
+    <Template>DIMENSIONS.COUNT</Template>
+  </Function>
+  <Function>
+    <Name>COUNT</Name>
+    <Category>Метаданные</Category>
+    <Description>Подсчитывает количество элементов кортежа.</Description>
+    <Template>«Tuple».COUNT</Template>
+  </Function>
+  <Function>
+    <Name>COUNT</Name>
+    <Category>Статистика</Category>
+    <Description>Подсчитывает количество кортежей в наборе.</Description>
+    <Template>«Set».COUNT</Template>
+  </Function>
+  <Function>
+    <Name>LEVELS.COUNT</Name>
+    <Category>Метаданные</Category>
+    <Description>Подсчитывает количество уровней в иерархии.</Description>
+    <Template>«Hierarchy».LEVELS.COUNT</Template>
+  </Function>
+  <Function>
+    <Name>COUNT</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает количество кортежей в наборе, по выбору включая или исключая пустые кортежи.</Description>
+    <Template>COUNT( «Set»[, EXCLUDEEMPTY | INCLUDEEMPTY] )</Template>
+  </Function>
+  <Function>
+    <Name>COUSIN</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает дочерний элемент с той же позицией относительно родительского элемента, что и у указанного дочернего элемента.</Description>
+    <Template>COUSIN( «Member1», «Member2» )</Template>
+  </Function>
+  <Function>
+    <Name>COVARIANCE</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает ковариацию двух рядов на наборе с использованием формулы смещенной совокупности.</Description>
+    <Template>COVARIANCE( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>COVARIANCEN</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает ковариацию двух рядов на наборе с использованием формулы несмещенной совокупности.</Description>
+    <Template>COVARIANCEN( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>CROSSJOIN</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает перекрестное произведение двух наборов.</Description>
+    <Template>CROSSJOIN( «Set1», «Set2» )</Template>
+  </Function>
+  <Function>
+    <Name>CURRENT</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает текущий кортеж из набора во время итерации.</Description>
+    <Template>«Set».CURRENT</Template>
+  </Function>
+  <Function>
+    <Name>CURRENTMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает текущий элемент для иерархии</Description>
+    <Template>«Hierarchy».CURRENTMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>CURRENTORDINAL</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает текущий порядковый номер во время итерации по набору</Description>
+    <Template>«Set».CURRENTORDINAL</Template>
+  </Function>
+  <Function>
+    <Name>CUSTOMDATA</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает значение свойства CustomData</Description>
+    <Template>CUSTOMDATA</Template>
+  </Function>
+  <Function>
+    <Name>DATAMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает элемент данных, сформированный системой и связанный с неконцевым элементом.</Description>
+    <Template>«Member».DATAMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>DEFAULTMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает элемент по умолчанию для иерархии.</Description>
+    <Template>«Hierarchy».DEFAULTMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>DESCENDANTS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор потомков элемента на указанном уровне, по выбору включая или исключая потомков на других уровнях.</Description>
+    <Template>DESCENDANTS( «Member»[, «Level»[, «Desc_flags»]] )</Template>
+  </Function>
+  <Function>
+    <Name>DESCENDANTS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор потомков элемента на указанном удалении в иерархии, по выбору включая или исключая потомков на других уровнях.</Description>
+    <Template>DESCENDANTS( «Member»,«Distance»[, «Desc_flags»] )</Template>
+  </Function>
+  <Function>
+    <Name>DISTINCT</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, удаляя повторяющиеся кортежи из указанного набора.</Description>
+    <Template>DISTINCT( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>DISTINCTCOUNT</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает количество уникальных кортежей в наборе.</Description>
+    <Template>DISTINCTCOUNT( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNLEVEL</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением элементы набора на один уровень ниже самого нижнего уровня, представленного в наборе, или на один уровень ниже дополнительного уровня элемента, представленного в наборе.</Description>
+    <Template>DRILLDOWNLEVEL( «Set»[, «Level» ] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNLEVEL</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением элементы набора на один уровень ниже самого нижнего уровня, представленного в наборе, или на один уровень ниже измерения, которое при необходимости выбирается по его индексу элемента (начиная с нуля), представленного в наборе.</Description>
+    <Template>DRILLDOWNLEVEL( «Set»[, , «Index»] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNLEVELBOTTOM</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением на один уровень ниже заданное количество нижних элементов набора на указанном уровне.</Description>
+    <Template>DRILLDOWNLEVELBOTTOM( «Set», «Count»[, [«Level»][, «Numeric Expression»] ] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNLEVELTOP</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением на один уровень ниже заданное количество верхних элементов набора на указанном уровне.</Description>
+    <Template>DRILLDOWNLEVELTOP( «Set», «Count»[, [«Level»][, «Numeric Expression»] ] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNMEMBER</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением элементы заданного набора, присутствующие во втором указанном наборе.</Description>
+    <Template>DRILLDOWNMEMBER( «Set1», «Set2»[, RECURSIVE] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNMEMBERBOTTOM</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением элементы указанного набора, присутствующие во втором указанном наборе, ограничивая результирующий набор заданным количеством самых нижних элементов.</Description>
+    <Template>DRILLDOWNMEMBERBOTTOM( «Set1», «Set2», «Count»[, [«Numeric Expression»] [, RECURSIVE] ] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLDOWNMEMBERTOP</Name>
+    <Category>UI</Category>
+    <Description>Детализирует углублением элементы указанного набора, присутствующие во втором указанном наборе, ограничивая результирующий набор заданным количеством самых верхних элементов.</Description>
+    <Template>DRILLDOWNMEMBERTOP( «Set1», «Set2», «Count»[, [«Numeric Expression»] [, RECURSIVE] ] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLUPLEVEL</Name>
+    <Category>UI</Category>
+    <Description>Детализирует обобщением элементы набора, находящиеся ниже указанного уровня.</Description>
+    <Template>DRILLUPLEVEL( «Set»[, «Level»] )</Template>
+  </Function>
+  <Function>
+    <Name>DRILLUPMEMBER</Name>
+    <Category>UI</Category>
+    <Description>Детализирует обобщением элементы указанного набора, присутствующие во втором указанном наборе.</Description>
+    <Template>DRILLUPMEMBER( «Set1», «Set2» )</Template>
+  </Function>
+  <Function>
+    <Name>EXCEPT</Name>
+    <Category>Набор</Category>
+    <Description>Находит разницу между двумя наборами, по выбору сохраняя повторяющиеся значения.</Description>
+    <Template>EXCEPT( «Set1», «Set2»[, ALL] )</Template>
+  </Function>
+  <Function>
+    <Name>EXISTING</Name>
+    <Category>Набор</Category>
+    <Description/>
+    <Template>EXISTING</Template>
+  </Function>
+  <Function>
+    <Name>EXISTS</Name>
+    <Category>Набор</Category>
+    <Description/>
+    <Template>EXISTS( «Set1», «Set2» )</Template>
+  </Function>
+  <Function>
+    <Name>EXTRACT</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор кортежей из извлеченных элементов измерения.</Description>
+    <Template>EXTRACT( «Set», «Dimension»[, «Dimension»...] )</Template>
+  </Function>
+  <Function>
+    <Name>FILTER</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, получающийся в результате фильтрации набора на основе условия поиска.</Description>
+    <Template>FILTER( «Set», «Search Condition» )</Template>
+  </Function>
+  <Function>
+    <Name>FIRSTCHILD</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает первый дочерний элемент указанного элемента.</Description>
+    <Template>«Member».FIRSTCHILD</Template>
+  </Function>
+  <Function>
+    <Name>FIRSTSIBLING</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает первый дочерний элемент родительского элемента указанного элемента.</Description>
+    <Template>«Member».FIRSTSIBLING</Template>
+  </Function>
+  <Function>
+    <Name>GENERATE</Name>
+    <Category>Набор</Category>
+    <Description>Применяет набор к каждому элементу другого набора и соединяет результирующие наборы операцией объединения (union).</Description>
+    <Template>GENERATE( «Set1», «Set2»[, ALL] )</Template>
+  </Function>
+  <Function>
+    <Name>GENERATE</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает строку, созданную путем сцепления результатов вычисления строкового выражения для набора.</Description>
+    <Template>GENERATE( «Set», «String Expression»[, «Delimiter»] )</Template>
+  </Function>
+  <Function>
+    <Name>HEAD</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает указанное количество первых элементов набора.</Description>
+    <Template>HEAD( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>HIERARCHIZE</Name>
+    <Category>Набор</Category>
+    <Description>Упорядочивает элементы указанного набора в иерархии в естественном или, по выбору, в обратном порядке.</Description>
+    <Template>HIERARCHIZE( «Set»[, POST] )</Template>
+  </Function>
+  <Function>
+    <Name>HIERARCHY</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает иерархию указанного уровня.</Description>
+    <Template>«Level».HIERARCHY</Template>
+  </Function>
+  <Function>
+    <Name>HIERARCHY</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает иерархию указанного измерения.</Description>
+    <Template>«Member».HIERARCHY</Template>
+  </Function>
+  <Function>
+    <Name>IIF</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает одно из значений, определенных логическим тестом.</Description>
+    <Template>IIF( «Logical Expression», «object»,  «object» )</Template>
+  </Function>
+  <Function>
+    <Name>INTERSECT</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает пересечение двух наборов, по выбору сохраняя повторяющиеся значения.</Description>
+    <Template>INTERSECT( «Set1», «Set2»[, ALL] )</Template>
+  </Function>
+  <Function>
+    <Name>IS</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает значение TRUE, если два сравниваемых объекта эквивалентны; в противном случае возвращает значение FALSE.</Description>
+    <Template>IS</Template>
+  </Function>
+  <Function>
+    <Name>ISANCESTOR</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает значение TRUE, если указанный элемент является потомком другого указанного элемента; в противном случае возвращает значение FALSE.</Description>
+    <Template>ISANCESTOR( «Member1»,«Member2» )</Template>
+  </Function>
+  <Function>
+    <Name>ISEMPTY</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает значение TRUE, если значением рассматриваемого выражения является пустая ячейка; в противном случае возвращает значение FALSE.</Description>
+    <Template>ISEMPTY( «Value Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>ISGENERATION</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает значение TRUE, если указанный элемент принадлежит указанному поколению; в противном случае возвращает значение FALSE.</Description>
+    <Template>ISGENERATION( «Member»,«Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>ISLEAF</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает значение TRUE, если указанный элемент является концевым, а в противном случае возвращает значение FALSE.</Description>
+    <Template>ISLEAF( «Member» )</Template>
+  </Function>
+  <Function>
+    <Name>ISSIBLING</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает значение TRUE, если указанный элемент имеет того же родителя, что и другой указанный элемент; в противном случае возвращает значение FALSE.</Description>
+    <Template>ISSIBLING( «Member1»,«Member2» )</Template>
+  </Function>
+  <Function>
+    <Name>ITEM</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает элемент указанного кортежа.</Description>
+    <Template>«Tuple».ITEM( «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>ITEM</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает кортеж указанного набора.</Description>
+    <Template>«Set».ITEM( «String Expression»[, «String Expression»...] | «Index» )</Template>
+  </Function>
+  <Function>
+    <Name>KPICURRENTTIMEMEMBER</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает текущий элемент времени ключевого показателя эффективности</Description>
+    <Template>KPICURRENTTIMEMEMBER( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>KPIGOAL</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает цель ключевого показателя  эффективности.</Description>
+    <Template>KPIGOAL( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>KPISTATUS</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает меру с нормализованным состоянием от -1 до 1 для ключевого показателя эффективности. </Description>
+    <Template>KPISTATUS( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>KPITREND</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает меру с нормализованным трендом от -1 до 1 для ключевого показателя эффективности</Description>
+    <Template>KPITREND( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>KPIVALUE</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает меру с нормализованным значением от -1 до 1 для ключевого показателя эффективности</Description>
+    <Template>KPIVALUE( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>KPIWEIGHT</Name>
+    <Category>Ключевой показатель эффективности</Category>
+    <Description>Возвращает меру с весом для ключевого показателя эффективности</Description>
+    <Template>KPIWEIGHT( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>LAG</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает элемент, который находится на заданное число позиций раньше указанного элемента в измерении элемента.</Description>
+    <Template>«Member».LAG( «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>LASTCHILD</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает последний дочерний элемент указанного элемента.</Description>
+    <Template>«Member».LASTCHILD</Template>
+  </Function>
+  <Function>
+    <Name>LASTPERIODS</Name>
+    <Category>Время</Category>
+    <Description>Возвращает набор элементов, расположенных до указанного элемента, включая этот элемент.</Description>
+    <Template>LASTPERIODS( «Index»[, «Member»] )</Template>
+  </Function>
+  <Function>
+    <Name>LASTSIBLING</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает последний дочерний элемент родителя указанного элемента.</Description>
+    <Template>«Member».LASTSIBLING</Template>
+  </Function>
+  <Function>
+    <Name>LEAD</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает элемент, который находится на заданное число позиций позже указанного элемента в измерении элемента.</Description>
+    <Template>«Member».LEAD( «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>LEVEL</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает уровень элемента.</Description>
+    <Template>«Member».LEVEL</Template>
+  </Function>
+  <Function>
+    <Name>LEVELS</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает уровень, позиция которого (начиная с нуля) в измерении задана числовым выражением.</Description>
+    <Template>«Hierarchy».LEVELS( «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>LINKMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает элемент, эквивалентный заданному элементу в указанной иерархии.</Description>
+    <Template>LINKMEMBER( «Member&gt;, «Hierarchy» )</Template>
+  </Function>
+  <Function>
+    <Name>LINREGINTERCEPT</Name>
+    <Category>Статистика</Category>
+    <Description>Вычисляет линейную регрессию для набора и возвращает значение константы b в уравнении линии регрессии y = ax + b.</Description>
+    <Template>LINREGINTERCEPT( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>LINREGPOINT</Name>
+    <Category>Статистика</Category>
+    <Description>Вычисляет линейную регрессию для набора и возвращает значение переменной y в уравнении линии регрессии y = ax + b.</Description>
+    <Template>LINREGPOINT( «Numeric Expression», «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>LINREGR2</Name>
+    <Category>Статистика</Category>
+    <Description>Вычисляет линейную регрессию для набора и возвращает значение R² (коэффициента смешанной корреляции).</Description>
+    <Template>LINREGR2( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>LINREGSLOPE</Name>
+    <Category>Статистика</Category>
+    <Description>Вычисляет линейную регрессию для набора и возвращает значение константы a в уравнении линии регрессии y = ax + b.</Description>
+    <Template>LINREGSLOPE( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>LINREGVARIANCE</Name>
+    <Category>Статистика</Category>
+    <Description>Вычисляет линейную регрессию для набора и возвращает дисперсию, связанную с линией регрессии y = ax + b.</Description>
+    <Template>LINREGVARIANCE( «Set», «Numeric Expression»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>LOOKUPCUBE</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает значение многомерного выражения, вычисленное для другого указанного куба в той же базе данных.</Description>
+    <Template>LOOKUPCUBE( «Cube Name», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>MAX</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает максимальное значение числового выражения, вычисленного на наборе.</Description>
+    <Template>MAX( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>MEASUREGROUPMEASURES</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор мер в группе мер.</Description>
+    <Template>MEASUREGROUPMEASURES( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>MEDIAN</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает медиант для числового выражения, вычисленного для набора.</Description>
+    <Template>MEDIAN( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>MEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор всех элементов указанной иерархии.</Description>
+    <Template>«Hierarchy».MEMBERS</Template>
+  </Function>
+  <Function>
+    <Name>MEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор всех элементов на указанном уровне измерения.</Description>
+    <Template>«Level».MEMBERS</Template>
+  </Function>
+  <Function>
+    <Name>MEMBERTOSTR</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает строку из элемента в формате многомерных выражений.</Description>
+    <Template>MEMBERTOSTR( «Member» )</Template>
+  </Function>
+  <Function>
+    <Name>MEMBERVALUE</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает значение элемента вместе с его исходным типом данных.</Description>
+    <Template>«Member».MEMBERVALUE</Template>
+  </Function>
+  <Function>
+    <Name>MIN</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает минимальное значение числового выражения, вычисленное на наборе.</Description>
+    <Template>MIN( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>MTD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает множество элементов уровня "Месяц" в измерении "Время", начиная с первого периода и заканчивая указанным элементом.</Description>
+    <Template>MTD( [«Member»] )</Template>
+  </Function>
+  <Function>
+    <Name>NAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает имя указанного элемента.</Description>
+    <Template>«Member».NAME</Template>
+  </Function>
+  <Function>
+    <Name>NAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает имя указанной иерархии.</Description>
+    <Template>«Hierarchy».NAME</Template>
+  </Function>
+  <Function>
+    <Name>NAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает имя указанного уровня.</Description>
+    <Template>«Level».NAME( Level )</Template>
+  </Function>
+  <Function>
+    <Name>NAMETOSET</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает набор, содержащий единственный элемент, на основе строкового выражения, содержащего имя элемента.</Description>
+    <Template>NAMETOSET( «Member Name» )</Template>
+  </Function>
+  <Function>
+    <Name>NEXTMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает следующий элемент уровня, содержащего указанный элемент.</Description>
+    <Template>«Member».NEXTMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>NONEMPTY</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает поднабор первого набора с удаленными пустыми кортежами на основе перекрестного произведения со вторым набором.</Description>
+    <Template>NONEMPTY( «Set1», «Set2» )</Template>
+  </Function>
+  <Function>
+    <Name>NONEMPTYCROSSJOIN</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает прямое произведение двух или более наборов в виде набора с исключенными пустыми элементами.</Description>
+    <Template>NONEMPTYCROSSJOIN( «Set1», «Set2»[, «Set3»...][, «Crossjoin Count»] )</Template>
+  </Function>
+  <Function>
+    <Name>OPENINGPERIOD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает первый элемент среди потомков указанного уровня, по выбору начиная с указанного элемента.</Description>
+    <Template>OPENINGPERIOD( [«Level»[, «Member»] ] )</Template>
+  </Function>
+  <Function>
+    <Name>ORDER</Name>
+    <Category>Набор</Category>
+    <Description>Организует элементы указанного набора, по выбору с сохранением или нарушением иерархии.</Description>
+    <Template>ORDER( «Set», {«String Expression» | «Numeric Expression»}[, ASC | DESC | BASC | BDESC] )</Template>
+  </Function>
+  <Function>
+    <Name>ORDINAL</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает порядковый номер (начиная с нуля), связанный с указанным уровнем.</Description>
+    <Template>«Level».ORDINAL</Template>
+  </Function>
+  <Function>
+    <Name>PARALLELPERIOD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает элемент предыдущего периода, расположенный в той же относительной позиции, что и указанный элемент.</Description>
+    <Template>PARALLELPERIOD( [«Level»[, «Numeric Expression»[, «Member»] ] ] )</Template>
+  </Function>
+  <Function>
+    <Name>PARENT</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает родителя указанного элемента.</Description>
+    <Template>«Member».PARENT</Template>
+  </Function>
+  <Function>
+    <Name>PERIODSTODATE</Name>
+    <Category>Время</Category>
+    <Description>Возвращает набор элементов (периодов) указанного уровня, начиная с первого элемента и заканчивая указанным.</Description>
+    <Template>PERIODSTODATE( [«Level»[, «Member»] ] )</Template>
+  </Function>
+  <Function>
+    <Name>PREDICT</Name>
+    <Category>Прочее</Category>
+    <Description>Возвращает значение числового выражения, полученное с помощью модели интеллектуального анализа данных.</Description>
+    <Template>PREDICT( «Mining Model Name», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>PREVMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает предыдущий элемент уровня, содержащего указанный элемент.</Description>
+    <Template>«Member».PREVMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>PROPERTIES</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает строку, содержащую значение указанного свойства элемента.</Description>
+    <Template>«Member».PROPERTIES( «String Expression»[, TYPED] )</Template>
+  </Function>
+  <Function>
+    <Name>QTD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает набор элементов уровня "Квартал" в измерении "Время", начиная с первого периода и заканчивая указанным элементом.</Description>
+    <Template>QTD( [«Member»] )</Template>
+  </Function>
+  <Function>
+    <Name>RANK</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает ранг (начиная с единицы) указанного кортежа указанного набора.</Description>
+    <Template>RANK( «Tuple», «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>ROLLUPCHILDREN</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает значение, порожденное сверткой значений дочерних элементов указанного элемента при помощи указанного унарного оператора.</Description>
+    <Template>ROLLUPCHILDREN( «Member», «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>SETTOARRAY</Name>
+    <Category>Прочее</Category>
+    <Description>Преобразует набор или несколько наборов в массив для использования в пользовательской функции.</Description>
+    <Template>SETTOARRAY( «Set»[, «Set»...][, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>SETTOSTR</Name>
+    <Category>Строка</Category>
+    <Description>Создает из набора строку в формате многомерных выражений.</Description>
+    <Template>SETTOSTR( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>SIBLINGS</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает набор элементов с общим родителем для указанного элемента, включающий его самого.</Description>
+    <Template>«Member».SIBLINGS</Template>
+  </Function>
+  <Function>
+    <Name>STDDEV</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает среднеквадратичное отклонение числового выражения на наборе, вычисленное методом несмещенной совокупности. (Псевдоним для Stdev.)</Description>
+    <Template>STDDEV( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>STDDEVP</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает среднеквадратичное отклонение числового выражения для набора, вычисленное методом смещенной совокупности. (Псевдоним для StdevP.)</Description>
+    <Template>STDDEVP( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>STDEVP</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает среднеквадратичное отклонение числового выражения на наборе, вычисленное методом несмещенной совокупности.</Description>
+    <Template>STDEVP( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>STDEVP</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает среднеквадратичное отклонение числового выражения для набора, вычисленное методом смещенной совокупности.</Description>
+    <Template>STDEVP( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>STRIPCALCULATEDMEMBERS</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, полученный путем удаления вычисляемых элементов из указанного набора.</Description>
+    <Template>STRIPCALCULATEDMEMBERS( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>STRTOMEMBER</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает элемент из строкового выражения в формате многомерных выражений.</Description>
+    <Template>STRTOMEMBER( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>STRTOSET</Name>
+    <Category>Строка</Category>
+    <Description>Создает набор из указанного строкового выражения в формате многомерных выражений.</Description>
+    <Template>STRTOSET( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>STRTOTUPLE</Name>
+    <Category>Строка</Category>
+    <Description>Создает кортеж из указанного строкового выражения в формате многомерных выражений.</Description>
+    <Template>STRTOTUPLE( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>STRTOVALUE</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает значение из строкового выражения.</Description>
+    <Template>STRTOVALUE( «String Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>SUBSET</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает подмножество элементов указанного набора.</Description>
+    <Template>SUBSET( «Set», «Start»[, «Count»] )</Template>
+  </Function>
+  <Function>
+    <Name>SUM</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает сумму числовых выражений, вычисленных на указанном наборе.</Description>
+    <Template>SUM( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>TAIL</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает подмножество элементов, начиная с конца указанного набора.</Description>
+    <Template>TAIL( «Set»[, «Count»] )</Template>
+  </Function>
+  <Function>
+    <Name>TOGGLEDRILLSTATE</Name>
+    <Category>UI</Category>
+    <Description>Переключает состояние детализации элементов.</Description>
+    <Template>TOGGLEDRILLSTATE( «Set1», «Set2»[, RECURSIVE] )</Template>
+  </Function>
+  <Function>
+    <Name>TOPCOUNT</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает указанное число самых верхних элементов заданного набора, с возможным предварительным упорядочиванием набора.</Description>
+    <Template>TOPCOUNT( «Set», «Count»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>TOPPERCENT</Name>
+    <Category>Набор</Category>
+    <Description>Упорядочивает набор и возвращает верхние элементы, совокупное значение которых не меньше указанного процента.</Description>
+    <Template>TOPPERCENT( «Set», «Percentage», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>TOPSUM</Name>
+    <Category>Набор</Category>
+    <Description>Упорядочивает набор и возвращает верхние элементы, совокупное значение которых не меньше указанного значения.</Description>
+    <Template>TOPSUM( «Set», «Value», «Numeric Expression» )</Template>
+  </Function>
+  <Function>
+    <Name>TUPLETOSTR</Name>
+    <Category>Строка</Category>
+    <Description>Возвращает строку в формате многомерных выражений из указанного кортежа.</Description>
+    <Template>TUPLETOSTR( «Tuple» )</Template>
+  </Function>
+  <Function>
+    <Name>UNION</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор, полученный в результате объединения двух наборов с задаваемым по выбору сохранением дубликатов.</Description>
+    <Template>UNION( «Set1», «Set2»[, ALL] )</Template>
+  </Function>
+  <Function>
+    <Name>UNIQUENAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает уникальное имя указанной иерархии.</Description>
+    <Template>«Hierarchy».UNIQUENAME</Template>
+  </Function>
+  <Function>
+    <Name>UNIQUENAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает уникальное имя указанного элемента.</Description>
+    <Template>«Member».UNIQUENAME</Template>
+  </Function>
+  <Function>
+    <Name>UNIQUENAME</Name>
+    <Category>Метаданные</Category>
+    <Description>Возвращает уникальное имя указанного уровня.</Description>
+    <Template>«Level».UNIQUENAME</Template>
+  </Function>
+  <Function>
+    <Name>UNKNOWNMEMBER</Name>
+    <Category>Навигация</Category>
+    <Description>Возвращает имя домена и пользователя для текущего соединения.</Description>
+    <Template>UNKNOWNMEMBER</Template>
+  </Function>
+  <Function>
+    <Name>UNORDER</Name>
+    <Category>Набор</Category>
+    <Description>Возвращает набор без упорядочения.</Description>
+    <Template>UNORDER( «Set» )</Template>
+  </Function>
+  <Function>
+    <Name>VALIDMEASURE</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает значение, рассчитанное при заданной степени гранулярности для группы мер, без несвязанных измерений и атрибутов.</Description>
+    <Template>VALIDMEASURE( «Tuple» )</Template>
+  </Function>
+  <Function>
+    <Name>VALUE</Name>
+    <Category>Значение</Category>
+    <Description>Возвращает значение указанного элемента.</Description>
+    <Template>«Tuple».VALUE</Template>
+  </Function>
+  <Function>
+    <Name>VAR</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает дисперсию числового выражения для набора, рассчитанную методом несмещенной совокупности.</Description>
+    <Template>VAR( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>VARIANCE</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает дисперсию числового выражения для набора, рассчитанную методом несмещенной совокупности. (Псевдоним для функции Var.)</Description>
+    <Template>VARIANCE( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>VARIANCEP</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает дисперсию числового выражения для набора, вычисленную методом смещенной совокупности. (Псевдоним для функции VarP.)</Description>
+    <Template>VARIANCEP( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>VARP</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает дисперсию числового выражения для набора, вычисленную методом смещенной совокупности.</Description>
+    <Template>VARP( «Set»[, «Numeric Expression»] )</Template>
+  </Function>
+  <Function>
+    <Name>VISUALTOTALS</Name>
+    <Category>Статистика</Category>
+    <Description>Возвращает набор, порожденный динамическим суммированием дочерних элементов указанного набора, с возможным использованием шаблона для имени родительского элемента в результирующем наборе.</Description>
+    <Template>VISUALTOTALS( «Set», «Pattern» )</Template>
+  </Function>
+  <Function>
+    <Name>WTD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает набор элементов уровня "Неделя" в измерении "Время", начиная с первого периода и заканчивая указанным элементом.</Description>
+    <Template>WTD( [«Member»] )</Template>
+  </Function>
+  <Function>
+    <Name>YTD</Name>
+    <Category>Время</Category>
+    <Description>Возвращает набор элементов уровня "Год" в измерении "Время", начиная с первого периода и заканчивая указанным элементом.</Description>
+    <Template>YTD( [«Member»] )</Template>
+  </Function>
+</MDXFunctions>

@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventColumnDescriptions xmlns="http://tempuri.org/xmlfile.xsd">
+  <_locDefinition>
+    <_locDefault _loc="locNone"/>
+    <_locTag _loc="locData">DESCRIPTION</_locTag>
+    <_locTag _loc="locData">BESTPRACTICE</_locTag>
+  </_locDefinition>
+  <EVENTCATEGORIESLIST>
+    <EVENTCATEGORY>
+      <NAME>Broker</NAME>
+      <DESCRIPTION>Содержит классы событий, вызванных компонентом Service Broker.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>CLR</NAME>
+      <DESCRIPTION>Содержит классы событий, вызванных выполнением объектов среды CLR .NET в SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Cursors</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны операциями над курсорами.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Database</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны автоматическим увеличением или уменьшением файлов данных или журналов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Deprecation</NAME>
+      <DESCRIPTION>Содержит события, связанные с вызовом не рекомендованных к использованию функций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Errors and Warnings</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны ошибкой или предупреждением SQL Server, например ошибкой во время компиляции хранимой процедуры или исключением в SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Full text</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны запуском, прерыванием или остановкой полнотекстового поиска.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Locks</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны получением, отменой или снятием блокировки или любым другим действием над ней.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Objects</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны созданием, удалением или изменением объектов базы данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>OLEDB</NAME>
+      <DESCRIPTION>Содержит классы событий, порождаемые вызовами OLE DB.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Performance</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны операторами языка обработки данных (DML).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Progress Report</NAME>
+      <DESCRIPTION>Содержит класс событий Progress Report: Online Index Operation.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Query Notifications</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны обработкой уведомлений о запросах.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Scans</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны просмотром таблиц и индексов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Security Audit</NAME>
+      <DESCRIPTION>Содержит классы событий, используемые для аудита активности сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Server</NAME>
+      <DESCRIPTION>Содержит общие события сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Sessions</NAME>
+      <DESCRIPTION>Содержит классы событий сеансов сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Stored Procedures</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны выполнением хранимых процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>Transactions</NAME>
+      <DESCRIPTION>Содержит классы событий, которые вызваны выполнением транзакций под управлением координатора распределенных транзакций (Майкрософт) или записью в журнале транзакций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>TSQL</NAME>
+      <DESCRIPTION>Содержит классы событий, вызванных выполнением инструкций Transact-SQL, которые передаются клиентом экземпляру SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+    <EVENTCATEGORY>
+      <NAME>User configurable</NAME>
+      <DESCRIPTION>Содержит классы событий, определяемые пользователем.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENTCATEGORY>
+  </EVENTCATEGORIESLIST>
+  <EVENTLIST>
+    <!--RPC:Completed-->
+    <EVENT>
+      <ID>10</ID>
+      <DESCRIPTION>Происходит при завершении удаленного вызова процедуры (RPC).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--RPC:Starting-->
+    <EVENT>
+      <ID>11</ID>
+      <DESCRIPTION>Происходит при запуске удаленного вызова процедуры (RPC).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:BatchCompleted-->
+    <EVENT>
+      <ID>12</ID>
+      <DESCRIPTION>Возникает при завершении выполнения инструкции Transact-SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:BatchStarting-->
+    <EVENT>
+      <ID>13</ID>
+      <DESCRIPTION>Происходит при запуске выполнения пакета Transact-SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Login-->
+    <EVENT>
+      <ID>14</ID>
+      <DESCRIPTION>Собирает все новые события соединения с момента запуска трассировки, например запросы клиентов на соединение с сервером, на котором выполняется экземпляр SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Logout-->
+    <EVENT>
+      <ID>15</ID>
+      <DESCRIPTION>Собирает все новые события отключения с момента запуска трассировки, например выполнение клиентом команды отключения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Attention-->
+    <EVENT>
+      <ID>16</ID>
+      <DESCRIPTION>Собирает все требующие внимания события, например запросы клиента на прерывание или факты разрыва соединения с клиентом.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--ExistingConnection-->
+    <EVENT>
+      <ID>17</ID>
+      <DESCRIPTION>Отражает свойства существующих соединений пользователя в момент запуска трассировки. Сервер вызывает по одному событию ExistingConnection на каждое соединение пользователя. </DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Starts And Stops-->
+    <EVENT>
+      <ID>18</ID>
+      <DESCRIPTION>Регистрирует все операции остановки, запуска и приостановки работы службы.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--DTCTransaction-->
+    <EVENT>
+      <ID>19</ID>
+      <DESCRIPTION>Отслеживает координируемые MS DTC транзакции между двумя (или больше) базами данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Login Failed-->
+    <EVENT>
+      <ID>20</ID>
+      <DESCRIPTION>Показывает, что попытка входа в систему SQL Server со стороны клиента завершилась ошибкой.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--EventLog-->
+    <EVENT>
+      <ID>21</ID>
+      <DESCRIPTION>Показывает события, зарегистрированные в журнале событий приложений Windows.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--ErrorLog-->
+    <EVENT>
+      <ID>22</ID>
+      <DESCRIPTION>Показывает связанные с ошибками события, зарегистрированные в журнале ошибок SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Released-->
+    <EVENT>
+      <ID>23</ID>
+      <DESCRIPTION>Указывает, что была снята блокировка ресурса (например, блокировка страницы данных).\r\nКлассы событий Lock:Acquired и Lock:Released можно применять для наблюдения за блокировками объектов, типами блокировок и длительностью их действия. Следует выяснять причины длительных блокировок, так как они могут стать причиной конфликтных ситуаций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Acquired-->
+    <EVENT>
+      <ID>24</ID>
+      <DESCRIPTION>Указывает, что была установлена блокировка ресурса (например, блокировка страницы данных).\r\nКлассы событий Lock:Acquired и Lock:Released можно применять для наблюдения за блокировками объектов, типами блокировок и длительностью их действия. Следует выяснять причины длительных блокировок, так как они могут стать причиной конфликтных ситуаций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Deadlock-->
+    <EVENT>
+      <ID>25</ID>
+      <DESCRIPTION>Указывает, что две одновременно выполняемые транзакции взаимно блокируют друг друга, пытаясь выполнить несовместимые блокировки ресурсов, принадлежащих друг другу.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Cancel-->
+    <EVENT>
+      <ID>26</ID>
+      <DESCRIPTION>Показывает, что запрос на блокировку ресурса был отменен (например, из-за взаимоблокировки).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Timeout-->
+    <EVENT>
+      <ID>27</ID>
+      <DESCRIPTION>Показывает, что запрос на блокировку определенного ресурса, например страницы, превысил время ожидания, поскольку данный ресурс был блокирован другой транзакцией.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Degree of Parallelism (7.0 Insert)-->
+    <EVENT>
+      <ID>28</ID>
+      <DESCRIPTION>Описывает степень параллелизма, назначенную данной инструкции SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Exception-->
+    <EVENT>
+      <ID>33</ID>
+      <DESCRIPTION>Указывает на то, что в SQL Server произошло исключение.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:CacheMiss-->
+    <EVENT>
+      <ID>34</ID>
+      <DESCRIPTION>Указывает, что хранимая процедура не найдена в кэше процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:CacheInsert-->
+    <EVENT>
+      <ID>35</ID>
+      <DESCRIPTION>Указывает, что элемент вставлен в кэш процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:CacheRemove-->
+    <EVENT>
+      <ID>36</ID>
+      <DESCRIPTION>Указывает, что элемент удален из кэша процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:Recompile-->
+    <EVENT>
+      <ID>37</ID>
+      <DESCRIPTION>Указывает, что осуществляется повторная компиляция хранимой процедуры.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:CacheHit-->
+    <EVENT>
+      <ID>38</ID>
+      <DESCRIPTION>Указывает, что процедура найдена в кэше.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Deprecated-->
+    <EVENT>
+      <ID>39</ID>
+      <DESCRIPTION>Указывает контекст локального состояния для выполняющейся процедуры.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:StmtStarting-->
+    <EVENT>
+      <ID>40</ID>
+      <DESCRIPTION>Происходит при запуске инструкции Transact-SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:StmtCompleted-->
+    <EVENT>
+      <ID>41</ID>
+      <DESCRIPTION>Возникает при завершении выполнения инструкции Transact-SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:Starting-->
+    <EVENT>
+      <ID>42</ID>
+      <DESCRIPTION>Указывает, что запущена хранимая процедура.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:Completed-->
+    <EVENT>
+      <ID>43</ID>
+      <DESCRIPTION>Указывает, что выполнение хранимой процедуры завершено.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:StmtStarting-->
+    <EVENT>
+      <ID>44</ID>
+      <DESCRIPTION>Указывает, что начато выполнение инструкции Transact-SQL в хранимой процедуре.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SP:StmtCompleted-->
+    <EVENT>
+      <ID>45</ID>
+      <DESCRIPTION>Указывает, что завершено выполнение инструкции Transact-SQL в хранимой процедуре.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Object:Created-->
+    <EVENT>
+      <ID>46</ID>
+      <DESCRIPTION>Указывает, когда был создан объект, например, для инструкций CREATE INDEX, CREATE TABLE и CREATE DATABASE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Object:Deleted-->
+    <EVENT>
+      <ID>47</ID>
+      <DESCRIPTION>Указывает, когда был удален объект, например, в инструкциях DROP INDEX и DROP TABLE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQLTransaction-->
+    <EVENT>
+      <ID>50</ID>
+      <DESCRIPTION>Отслеживает инструкции BEGIN TRANSACTION, COMMIT TRANSACTION, SAVE TRANSACTION и ROLLBACK TRANSACTION.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Scan:Started-->
+    <EVENT>
+      <ID>51</ID>
+      <DESCRIPTION>Указывает, что был начат просмотр таблицы или индекса.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Scan:Stopped-->
+    <EVENT>
+      <ID>52</ID>
+      <DESCRIPTION>Указывает, что завершен просмотр таблицы или индекса.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorOpen-->
+    <EVENT>
+      <ID>53</ID>
+      <DESCRIPTION>Указывает, что был открыт курсор на инструкции Transact-SQL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TransactionLog-->
+    <EVENT>
+      <ID>54</ID>
+      <DESCRIPTION>Отслеживает запись транзакций в журнал транзакций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Hash Warning-->
+    <EVENT>
+      <ID>55</ID>
+      <DESCRIPTION>Происходит при возникновении рекурсии во время операции хэширования или при прекращении хэширования (когда достигнут верхний предел).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Auto Stats-->
+    <EVENT>
+      <ID>58</ID>
+      <DESCRIPTION>Собирает события, связанные с автоматическим созданием и обновлением статистики.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Deadlock Chain-->
+    <EVENT>
+      <ID>59</ID>
+      <DESCRIPTION>Создается для каждого события, приводящего к взаимоблокировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Escalation-->
+    <EVENT>
+      <ID>60</ID>
+      <DESCRIPTION>Блокировка более мелких фрагментов данных была преобразована в блокировку более крупных фрагментов данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--OLEDB Errors-->
+    <EVENT>
+      <ID>61</ID>
+      <DESCRIPTION>Показывает, что произошла ошибка OLE DB.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Execution Warnings-->
+    <EVENT>
+      <ID>67</ID>
+      <DESCRIPTION>Показывает все предупреждения, которые были выданы за время выполнения инструкции или хранимой процедуры SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan Text (Unencoded)-->
+    <EVENT>
+      <ID>68</ID>
+      <DESCRIPTION>Показывает дерево плана выполнения для текущей инструкции SQL. Класс событий Showplan Text (Unencoded) аналогичен классу событий Showplan Text (за исключением того, что сведения о событии форматируются в текстовом виде, а не в виде двоичных данных).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Sort Warnings-->
+    <EVENT>
+      <ID>69</ID>
+      <DESCRIPTION>Показывает операции сортировки, которые не помещаются в памяти. Сюда не входят операции сортировки, предполагающие создание индексов, а только операции сортировки в запросе (например предложение ORDER BY, используемое в инструкции SELECT).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorPrepare-->
+    <EVENT>
+      <ID>70</ID>
+      <DESCRIPTION>Возникает, когда ядро СУБД Microsoft SQL Server компилирует инструкцию SELECT, связанную с курсором, в план выполнения, но курсор не создается.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Prepare SQL-->
+    <EVENT>
+      <ID>71</ID>
+      <DESCRIPTION>Показывает, что одна или несколько инструкций SQL подготовлены для использования ODBC, OLE DB или DB-Library.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Exec Prepared SQL-->
+    <EVENT>
+      <ID>72</ID>
+      <DESCRIPTION>Показывает, что одна или несколько подготовленных инструкций Transact-SQL были выполнены посредством SqlClient, ODBC, OLE DB или DB-Library.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Unprepare SQL-->
+    <EVENT>
+      <ID>73</ID>
+      <DESCRIPTION>Показывает, что SqlClient, ODBC, OLE DB или DB-Library хранит освобожденные (удаленные) или подготовленные инструкции Transact-SQL или инструкции SQL. </DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorExecute-->
+    <EVENT>
+      <ID>74</ID>
+      <DESCRIPTION>Возникает, когда ядро СУБД Microsoft SQL Server создает и заполняет курсор из плана выполнения, созданного событием подготовки курсора.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorRecompile-->
+    <EVENT>
+      <ID>75</ID>
+      <DESCRIPTION>Возникает, когда ядро СУБД Microsoft SQL Server перекомпилирует курсор Transact-SQL по причине изменения схемы.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorImplicitConversion-->
+    <EVENT>
+      <ID>76</ID>
+      <DESCRIPTION>Возникает, когда ядро СУБД Microsoft SQL Server выполняет инструкцию Transact-SQL, которая не поддерживается серверным курсором запрошенного типа. Ядро СУБД SQL Server возвращает ошибку, которая указывает на то, что тип курсора изменился.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorUnprepare-->
+    <EVENT>
+      <ID>77</ID>
+      <DESCRIPTION>Происходит, когда ядро СУБД Microsoft SQL Server отменяет план выполнения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CursorClose-->
+    <EVENT>
+      <ID>78</ID>
+      <DESCRIPTION>Возникает, когда ядро СУБД Microsoft SQL Server закрывает курсор и освобождает его ресурсы.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Missing Column Statistics-->
+    <EVENT>
+      <ID>79</ID>
+      <DESCRIPTION>Показывает, что отсутствует статистика по столбцам, которая могла бы быть использована оптимизатором запросов. Ее отсутствие может привести к тому, что оптимизатор выберет менее эффективный план запроса, чем ожидалось бы в противном случае. Если используется автоматическое создание статистики, события этого класса появляться не будут.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Missing Join Predicate-->
+    <EVENT>
+      <ID>80</ID>
+      <DESCRIPTION>Указывает, что отсутствует предикат, соединяющий две таблицы. Это может привести к неточным результатам и появлению долго выполняющихся запросов. Это событие выдается только в том случае, если обе стороны соединения возвращают более одной строки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Server Memory Change-->
+    <EVENT>
+      <ID>81</ID>
+      <DESCRIPTION>Показывает, что использование памяти SQL Server увеличилось или уменьшилось на 1 мегабайт или на 5 % от максимального объема памяти сервера (в зависимости от того, какая величина больше).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:0-->
+    <EVENT>
+      <ID>82</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:1-->
+    <EVENT>
+      <ID>83</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий в других категориях.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:2-->
+    <EVENT>
+      <ID>84</ID>
+      <DESCRIPTION>Используется для мониторинга пользовательских событий, которые не могут контролироваться с помощью системных событий в других категориях.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:3-->
+    <EVENT>
+      <ID>85</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:4-->
+    <EVENT>
+      <ID>86</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:5-->
+    <EVENT>
+      <ID>87</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:6-->
+    <EVENT>
+      <ID>88</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:7-->
+    <EVENT>
+      <ID>89</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:8-->
+    <EVENT>
+      <ID>90</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--UserConfigurable:9-->
+    <EVENT>
+      <ID>91</ID>
+      <DESCRIPTION>Используется для наблюдения за пользовательскими событиями, которые не могут контролироваться с помощью системных событий других категорий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Data File Auto Grow-->
+    <EVENT>
+      <ID>92</ID>
+      <DESCRIPTION>Указывает на то, что размер файла данных увеличивается автоматически. Это событие не происходит при явном увеличении файла данных с помощью инструкции ALTER DATABASE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Log File Auto Grow-->
+    <EVENT>
+      <ID>93</ID>
+      <DESCRIPTION>Указывает на то, что файл журнала увеличился автоматически. Это событие не происходит при явном увеличении файла журнала с помощью инструкции ALTER DATABASE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Data File Auto Shrink-->
+    <EVENT>
+      <ID>94</ID>
+      <DESCRIPTION>Указывает на то, что файл данных был сжат.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Log File Auto Shrink-->
+    <EVENT>
+      <ID>95</ID>
+      <DESCRIPTION>Показывает, что файл журнала был сжат.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan Text-->
+    <EVENT>
+      <ID>96</ID>
+      <DESCRIPTION>Показывает дерево плана запроса для выполняемой инструкции SQL. Включите класс событий Showplan Text, чтобы определить операторы Showplan в SQL Server 2000 и SQL Server 7.0. Этот класс событий также работает в SQL Server 2005 и более поздних версиях, однако включаемые сведения представляют собой подмножество сведений, доступных посредством классов событий Showplan All, Showplan XML Statistics Profile и Showplan XML.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan All-->
+    <EVENT>
+      <ID>97</ID>
+      <DESCRIPTION>Показывает план запроса с подробными сведениями на время компиляции (включая стоимостные оценки и список столбцов) для выполняемой инструкции SQL. Если в трассировку включен класс события Showplan All, должен быть выбран столбец данных BinaryData. Если нет, сведения для этого класса событий не будут отображаться в трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan Statistics Profile-->
+    <EVENT>
+      <ID>98</ID>
+      <DESCRIPTION>Показывает план выполнения запроса с подробными (на время выполнения) сведениями, включая фактическое число строк, участвующими в каждой операции для выполняемой инструкции SQL. Если класс событий Showplan Statistics Profile включается в трассировку, необходимо выбрать столбец данных BinaryData. Если это не так, сведения о классе событий не будут отражаться в трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--RPC Output Parameter-->
+    <EVENT>
+      <ID>100</ID>
+      <DESCRIPTION>Данные о выходных параметрах ранее выполненного удаленного вызова процедуры.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Scope GDR Event-->
+    <EVENT>
+      <ID>102</ID>
+      <DESCRIPTION>Регистрирует события, связанные с предоставлением, отменой и запретом разрешений на выполнение инструкций (инструкциями GRANT, DENY и REVOKE).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Schema Object GDR Event-->
+    <EVENT>
+      <ID>103</ID>
+      <DESCRIPTION>Регистрирует события, связанные с предоставлением, отменой и запрещением разрешений на доступ к объектам GRANT, DENY, REVOKE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Addlogin Event-->
+    <EVENT>
+      <ID>104</ID>
+      <DESCRIPTION>Регистрирует все действия по добавлению и удалению имен для входа SQL Server процедурами sp_addlogin и sp_droplogin.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Login GDR Event-->
+    <EVENT>
+      <ID>105</ID>
+      <DESCRIPTION>Регистрирует все действия по предоставлению, отмене и запрещению прав учетных записей входа Windows для процедур sp_grantlogin, sp_revokelogin и sp_denylogin.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Login Change Property Event-->
+    <EVENT>
+      <ID>106</ID>
+      <DESCRIPTION>Регистрирует изменения свойств имен для входа, за исключением изменения паролей, процедурами sp_defaultdb и sp_default.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Login Change Password Event-->
+    <EVENT>
+      <ID>107</ID>
+      <DESCRIPTION>Регистрирует изменения имен для входа и паролей SQL Server. Пароли не записываются.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Add Login to Server Role Event-->
+    <EVENT>
+      <ID>108</ID>
+      <DESCRIPTION>Регистрирует события добавления и удаления имен для входа к предопределенной роли сервера для процедур sp_addsrvrolemember и sp_dropsrvrolemember.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Add DB User Event-->
+    <EVENT>
+      <ID>109</ID>
+      <DESCRIPTION>Регистрирует все события добавления и удаления пользователей базы данных (в Windows или SQL Server).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Add Member to DB Role Event-->
+    <EVENT>
+      <ID>110</ID>
+      <DESCRIPTION>Регистрирует события добавления и удаления членов ролей базы данных (предопределенных и пользовательских) для процедур sp_addrolemember и sp_droprolemember.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Add Role Event-->
+    <EVENT>
+      <ID>111</ID>
+      <DESCRIPTION>Регистрирует все операции добавления и удаления ролей баз данных для процедур sp_addrole и sp_droprole.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit App Role Change Password Event-->
+    <EVENT>
+      <ID>112</ID>
+      <DESCRIPTION>Регистрирует изменение паролей для приложения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Statement Permission Event-->
+    <EVENT>
+      <ID>113</ID>
+      <DESCRIPTION>Регистрирует использование разрешений на выполнение инструкций.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Schema Object Access Event-->
+    <EVENT>
+      <ID>114</ID>
+      <DESCRIPTION>Регистрирует успешное и неуспешное использование разрешений на доступ к объектам.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Backup/Restore Event-->
+    <EVENT>
+      <ID>115</ID>
+      <DESCRIPTION>Регистрирует события, связанные с инструкциями BACKUP и RESTORE.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit DBCC Event-->
+    <EVENT>
+      <ID>116</ID>
+      <DESCRIPTION>Регистрирует выполнение команд DBCC.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Change Audit Event-->
+    <EVENT>
+      <ID>117</ID>
+      <DESCRIPTION>Регистрирует изменения в режиме AUDIT.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Object Derived Permission Event-->
+    <EVENT>
+      <ID>118</ID>
+      <DESCRIPTION>Регистрирует применение команд CREATE, ALTER и DROP к указанному объекту.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--OLEDB Call Event-->
+    <EVENT>
+      <ID>119</ID>
+      <DESCRIPTION>Показывает вызовы поставщика OLE DB, выполняемые SQL Server для распределенных запросов и удаленных хранимых процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--OLEDB QueryInterface Event-->
+    <EVENT>
+      <ID>120</ID>
+      <DESCRIPTION>Показывает вызовы OLE DB IUnknown::QueryInterface, выполняемые SQL Server для распределенных запросов и удаленных хранимых процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--OLEDB DataRead Event-->
+    <EVENT>
+      <ID>121</ID>
+      <DESCRIPTION>Показывает вызовы метода IRowset::GetData поставщика OLE DB, выполняемые SQL Server при получении данных строк для распределенных запросов и удаленных хранимых процедур.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan XML-->
+    <EVENT>
+      <ID>122</ID>
+      <DESCRIPTION>Возникает при выполнении SQL Server инструкции SQL. Включите класс событий Showplan XML для идентификации операторов инструкции Showplan. Класс событий хранит описание каждого события как правильный XML-документ.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:FullTextQuery-->
+    <EVENT>
+      <ID>123</ID>
+      <DESCRIPTION>Показывает данные о производительности отдельных полнотекстовых запросов, включая сам запрос, число возвращенных строк и продолжительность выполнения запроса.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Conversation-->
+    <EVENT>
+      <ID>124</ID>
+      <DESCRIPTION>Сообщает о ходе диалога компонента Service Broker.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Deprecation Announcement-->
+    <EVENT>
+      <ID>125</ID>
+      <DESCRIPTION>Возникает при обращении к функциям, которые будут удалены в дальнейших версиях SQL Server, но в следующем основном выпуске еще сохранятся. Чтобы продлить срок службы приложения, избегайте использования функций, вызывающих классы событий Deprecation Announcement или Deprecation Final Support.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Deprecation Final Support-->
+    <EVENT>
+      <ID>126</ID>
+      <DESCRIPTION>Возникает при использовании возможности, которая будет удалена в следующей основной версии SQL Server. Чтобы продлить срок службы приложения, избегайте использования функций, вызывающих классы событий Deprecation Announcement или Deprecation Final Support.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Exchange Spill Event-->
+    <EVENT>
+      <ID>127</ID>
+      <DESCRIPTION>Класс событий Exchange Spill указывает, что буферы связи в параллельном плане запроса временно записаны в базу данных tempdb. Это происходит редко и только в том случае, когда план запроса содержит несколько просмотров диапазона.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Management Event-->
+    <EVENT>
+      <ID>128</ID>
+      <DESCRIPTION>Возникает при создании, изменении и удалении базы данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Object Management Event-->
+    <EVENT>
+      <ID>129</ID>
+      <DESCRIPTION>Происходит, когда с объектами базы данных (например, со схемами) выполняется инструкция CREATE, ALTER или DROP.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Principal Management Event-->
+    <EVENT>
+      <ID>130</ID>
+      <DESCRIPTION>Возникает при создании, изменении или удалении из базы данных таких участников, как пользователь.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Schema Object Management Event-->
+    <EVENT>
+      <ID>131</ID>
+      <DESCRIPTION>Происходит, когда инструкция CREATE, ALTER или DROP выполняется с объектами схемы, например с таблицами или представлениями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Principal Impersonation Event-->
+    <EVENT>
+      <ID>132</ID>
+      <DESCRIPTION>Происходит, когда выполняется олицетворение в области сервера, например, с помощью инструкции EXECUTE AS LOGIN.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Principal Impersonation Event-->
+    <EVENT>
+      <ID>133</ID>
+      <DESCRIPTION>Происходит, когда используется олицетворение в области базы данных, например, с помощью инструкции EXECUTE AS USER или SETUSER.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Object Take Ownership Event-->
+    <EVENT>
+      <ID>134</ID>
+      <DESCRIPTION>Возникает при изменении владельца объектов в области действия сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Object Take Ownership Event-->
+    <EVENT>
+      <ID>135</ID>
+      <DESCRIPTION>Происходит, когда меняется владелец для объектов в области базы данных, например, для сборок.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Conversation Group-->
+    <EVENT>
+      <ID>136</ID>
+      <DESCRIPTION>Возникает при создании компонентом Service Broker новой группы сообщений или при удалении существующей группы сообщений.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Blocked process report-->
+    <EVENT>
+      <ID>137</ID>
+      <DESCRIPTION>Указывает, что задача заблокирована дольше указанного времени. К данному классу событий не относятся системные задачи или задачи, ожидающие ресурсов, для которых нельзя обнаружить взаимоблокировку. Чтобы настроить частоту выдачи отчетов, настройте параметр blocked process threshold при помощи процедуры sp_configure.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Connection-->
+    <EVENT>
+      <ID>138</ID>
+      <DESCRIPTION>Сообщает о состоянии транспортного соединения, которым управляет компонент Service Broker.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Forwarded Message Sent-->
+    <EVENT>
+      <ID>139</ID>
+      <DESCRIPTION>Происходит, когда компонент Service Broker перенаправляет сообщение.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Forwarded Message Dropped-->
+    <EVENT>
+      <ID>140</ID>
+      <DESCRIPTION>Происходит, когда компонент Service Broker удаляет сообщение, предназначенное для перенаправления.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Message Classify-->
+    <EVENT>
+      <ID>141</ID>
+      <DESCRIPTION>Возникает при определении компонентом Service Broker маршрута сообщения. Сообщение распределено для локальной, удаленной или отложенной доставки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Transmission-->
+    <EVENT>
+      <ID>142</ID>
+      <DESCRIPTION>Указывает, что на транспортном уровне компонента Service Broker произошли ошибки. Номер ошибки и значения состояния обозначают источник ошибки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Queue Disabled-->
+    <EVENT>
+      <ID>143</ID>
+      <DESCRIPTION>Указывает, что было обнаружено опасное сообщение, поскольку в очереди компонента Service Broker произошло пять откатов транзакций. Это событие содержит идентификаторы базы данных и очереди, в которой находится опасное сообщение.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Mirrored Route State Changed-->
+    <EVENT>
+      <ID>144</ID>
+      <DESCRIPTION>Возникает, когда меняется состояние активного зеркального маршрута (т. е. маршрута, содержащего зеркальный адрес, который в текущий момент используется хотя бы одним диалогом, передающим сообщения). Это событие отражает изменение состояния одного из соединений, используемых зеркальным маршрутом. Кроме того, данное событие содержит состояние таких соединений (например, сервер может быть соединен в качестве источника или зеркального сервера или же отключен из-за проблем связи).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan XML Statistics Profile-->
+    <EVENT>
+      <ID>146</ID>
+      <DESCRIPTION>Возникает, когда SQL Server выполняет инструкцию SQL. Включите класс событий Showplan XML Statistics Profile, чтобы определить операторы Showplan в SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Deadlock graph-->
+    <EVENT>
+      <ID>148</ID>
+      <DESCRIPTION>Происходит одновременно с классом события Lock:Deadlock. Класс событий Deadlock Graph предоставляет описание взаимоблокировки в формате XML.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Remote Message Acknowledgement-->
+    <EVENT>
+      <ID>149</ID>
+      <DESCRIPTION>Указывает, когда было получено подтверждение.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Trace File Close-->
+    <EVENT>
+      <ID>150</ID>
+      <DESCRIPTION>Указывает, что файл трассировки был закрыт во время отката.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Database Mirroring Connection-->
+    <EVENT>
+      <ID>151</ID>
+      <DESCRIPTION>Указывает, изменилось ли состояние соединения между основным, зеркальным и следящим серверами в зеркальном отображении базы данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Change Database Owner-->
+    <EVENT>
+      <ID>152</ID>
+      <DESCRIPTION>Возникает, когда были проверены разрешения на смену владельца базы данных. Это происходит, когда происходит смена владельца базы данных инструкцией ALTER AUTHORIZATION.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Schema Object Take Ownership Event-->
+    <EVENT>
+      <ID>153</ID>
+      <DESCRIPTION>Возникает, когда проверяются разрешения на смену владельца объекта схемы (таблицы, процедуры, функции и т. д.). Это происходит, когда владелец назначается объекту при помощи инструкции ALTER AUTHORIZATION.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+	<!-- Audit Database Mirroring Login Event-->
+    <EVENT>
+      <ID>154</ID>
+      <DESCRIPTION>Уведомляет о сообщениях аудита, относящихся к безопасности транспорта зеркального отображения базы данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--FT:Crawl Started-->
+    <EVENT>
+      <ID>155</ID>
+      <DESCRIPTION>Указывает, что запущено полнотекстовое сканирование (заполнение). Данный класс событий используется для определения наличия среди выполняемых задач запроса на сканирование.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--FT:Crawl Stopped-->
+    <EVENT>
+      <ID>156</ID>
+      <DESCRIPTION>Указывает, что полнотекстовое сканирование содержимого (заполнение) было остановлено. Это могло произойти из-за успешного завершения сканирования или неустранимой ошибки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--FT:Crawl Aborted-->
+    <EVENT>
+      <ID>157</ID>
+      <DESCRIPTION>Указывает, что при полнотекстовом сканировании возникло исключение. Эта ошибка обычно приводит к остановке полнотекстового сканирования. Проверьте журнал сканирования и журнал событий Windows на предмет дополнительных сведений об ошибках.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Broker Conversation-->
+    <EVENT>
+      <ID>158</ID>
+      <DESCRIPTION>Записывает как успешные, так и неуспешные диалоги.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Broker Login-->
+    <EVENT>
+      <ID>159</ID>
+      <DESCRIPTION>Записывает произведенные подряд успешные и неуспешные попытки входа компонента Service Broker.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Message Undeliverable-->
+    <EVENT>
+      <ID>160</ID>
+      <DESCRIPTION>Возникает, если компоненту Service Broker не удается получить сообщение, которое должно быть доставлено службе в этом экземпляре. Перенаправляемые сообщения см. в классе событий Broker:Forwarded Message Dropped.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Corrupted Message-->
+    <EVENT>
+      <ID>161</ID>
+      <DESCRIPTION>Происходит, когда компонент Service Broker получает поврежденное сообщение.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--User Error Message-->
+    <EVENT>
+      <ID>162</ID>
+      <DESCRIPTION>Отображает сообщение об ошибке или исключении так, как оно передано пользователю. Текст сообщения содержится в поле TextData.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Broker:Activation-->
+    <EVENT>
+      <ID>163</ID>
+      <DESCRIPTION>Возникает, если монитор очереди запускает хранимую процедуру активации, отправляет уведомление QUEUE_ACTIVATION, а также по завершении хранимой процедуры активации, запущенной монитором очереди.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Object:Altered-->
+    <EVENT>
+      <ID>164</ID>
+      <DESCRIPTION>Указывает, что объект был изменен (например, инструкцией ALTER INDEX, ALTER TABLE или ALTER DATABASE). Каждая операция DDL выдает два полных события: одно для фазы Begin и одно для фазы Commit или Rollback.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Performance statistics-->
+    <EVENT>
+      <ID>165</ID>
+      <DESCRIPTION>Указывает, что скомпилированный план был впервые сохранен в кэш планов, перекомпилирован или удален из кэша.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--SQL:StmtRecompile-->
+    <EVENT>
+      <ID>166</ID>
+		<DESCRIPTION>Возникает, когда инструкция перекомпилируется в пакете (в том числе в хранимой процедуре). Это событие должно использоваться, начиная с SQL Server 2005, вместо SP:Recompile для трассировки перекомпиляций на уровне инструкции.</DESCRIPTION>
+		<BESTPRACTICE/>
+	</EVENT>
+    <!--Database Mirroring State Change-->
+    <EVENT>
+      <ID>167</ID>
+      <DESCRIPTION>Указывает, когда изменяется состояние зеркальной базы данных.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan XML For Query Compile-->
+    <EVENT>
+      <ID>168</ID>
+      <DESCRIPTION>Возникает, когда SQL Server компилирует инструкцию SQL. Включите класс событий Showplan XML For Query Compile, чтобы определить операторы Showplan в SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Showplan All For Query Compile-->
+    <EVENT>
+      <ID>169</ID>
+      <DESCRIPTION>Возникает, когда SQL Server компилирует инструкцию SQL. Включите класс событий Showplan All for Query Compile, чтобы определить операторы Showplan SQL Server 2000 и SQL Server 7.0. Этот класс событий также будет работать в SQL Server 2005 и более поздних версиях, однако включенные в него сведения являются подмножеством доступных в классе событий Showplan XML For Query Compile.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Scope GDR Event-->
+    <EVENT>
+      <ID>170</ID>
+      <DESCRIPTION>Происходит в случае события предоставления, отмены или запрещения разрешений на уровне сервера, например при создании имени для входа.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Object GDR Event-->
+    <EVENT>
+      <ID>171</ID>
+      <DESCRIPTION>Происходит в случае события предоставления, отмены или запрещения разрешений для объекта схемы, например таблицы или функции.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Object GDR Event-->
+    <EVENT>
+      <ID>172</ID>
+      <DESCRIPTION>Происходит в случае события предоставления, отмены или запрещения разрешений для объекта базы данных, например сборок и схем.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Operation Event-->
+    <EVENT>
+      <ID>173</ID>
+      <DESCRIPTION>Происходит при использовании на сервере операций аудита, например для изменения настроек, ресурсов, внешнего доступа или авторизации.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Alter Trace Event-->
+    <EVENT>
+      <ID>175</ID>
+      <DESCRIPTION>Возникает для всех инструкций, которые проверяют разрешение ALTER TRACE. В число инструкций, проверяющих ALTER TRACE, входят те, которые создают и настраивают трассировку, а также задают для нее фильтры.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Object Management Event-->
+    <EVENT>
+      <ID>176</ID>
+      <DESCRIPTION>Происходит при выполнении инструкций CREATE, ALTER и DROP для объектов сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Server Principal Management Event-->
+    <EVENT>
+      <ID>177</ID>
+      <DESCRIPTION>Происходит при выполнении инструкций CREATE, ALTER или DROP для участников на уровне сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Operation Event-->
+    <EVENT>
+      <ID>178</ID>
+      <DESCRIPTION>Происходит при выполнении различных операций в базе данных, например при создании контрольной точки или уведомлении о запросе подписки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Audit Database Object Access Event-->
+    <EVENT>
+      <ID>180</ID>
+      <DESCRIPTION>Возникает при доступе к таким объектам базы данных, как схема.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Begin Tran starting-->
+    <EVENT>
+      <ID>181</ID>
+      <DESCRIPTION>Указывает, что запрос BEGIN TRANSACTION начался. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Begin Tran completed-->
+    <EVENT>
+      <ID>182</ID>
+      <DESCRIPTION>Указывает, что запрос BEGIN TRANSACTION завершен. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Promote Tran starting-->
+    <EVENT>
+      <ID>183</ID>
+      <DESCRIPTION>Указывает, что запрос PROMOTE TRANSACTION начался. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Promote Tran completed-->
+    <EVENT>
+      <ID>184</ID>
+      <DESCRIPTION>Указывает, что запрос PROMOTE TRANSACTION завершен. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Commit Tran starting-->
+    <EVENT>
+      <ID>185</ID>
+      <DESCRIPTION>Указывает, что запрос COMMIT TRANSACTION начался. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Commit Tran completed-->
+    <EVENT>
+      <ID>186</ID>
+      <DESCRIPTION>Указывает, что запрос COMMIT TRANSACTION завершен. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Rollback Tran starting-->
+    <EVENT>
+      <ID>187</ID>
+      <DESCRIPTION>Указывает, что запрос ROLLBACK TRANSACTION начался. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Rollback Tran completed-->
+    <EVENT>
+      <ID>188</ID>
+      <DESCRIPTION>Указывает, что запрос ROLLBACK TRANSACTION завершен. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Lock:Timeout (timeout > 0)-->
+    <EVENT>
+      <ID>189</ID>
+      <DESCRIPTION>Показывает, что запрос на блокировку некоторого ресурса, например страницы, превысил время ожидания, поскольку данный ресурс был захвачен в блокирующем режиме другой транзакцией. Этот класс событий аналогичен классу событий Lock:Timeout, однако он не включает в себя события с временем ожидания 0.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Progress Report: Online Index Operation-->
+    <EVENT>
+      <ID>190</ID>
+      <DESCRIPTION>Показывает процесс выполнения построения индекса в режиме "в сети". В большинстве случаев процесс построения индексов в режиме "в сети" является операцией длительного выполнения. Данный класс событий может использоваться для просмотра хода построения индексов в режиме "в сети".</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Save Tran starting-->
+    <EVENT>
+      <ID>191</ID>
+      <DESCRIPTION>Указывает, что запрос SAVE TRANSACTION начался. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--TM: Save Tran completed-->
+    <EVENT>
+      <ID>192</ID>
+      <DESCRIPTION>Указывает, что запрос SAVE TRANSACTION завершен. Запрос был отправлен клиентом через интерфейс управления транзакциями.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Background Job Error-->
+    <EVENT>
+      <ID>193</ID>
+      <DESCRIPTION>Возникает при аварийном завершении фонового задания. Эта ситуация может потребовать вмешательства системного администратора.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--OLEDB Provider Information-->
+    <EVENT>
+      <ID>194</ID>
+      <DESCRIPTION>Возникает, если запускается распределенный запрос, который собирает сведения, относящиеся к соединению поставщика. Этот класс событий содержит все свойства, собранные в удаленном поставщике с помощью различных наборов свойств, таких как DBPROPSET_DATASOURCEINFO, SQLPROPSET_OPTHINTS, DBPROPSET_SQLSERVERDATASOURCEINFO (только SQL Server), DBPROPSET_SQLSERVERDBINIT (только SQL Server) и DBPROPSET_ROWSET, а также интерфейса IDBInfo.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Mount Tape-->
+    <EVENT>
+      <ID>195</ID>
+      <DESCRIPTION>Возникает при получении запроса на подключение ленты. Данный класс событий применяется для наблюдения за запросами подключения ленты и их успешного или неуспешного завершения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--Assembly Load-->
+    <EVENT>
+      <ID>196</ID>
+      <DESCRIPTION>Возникает при выполнении запроса на загрузку сборки. Это может оказаться полезным при диагностике запроса, использующего среду CLR, при диагностике медленно работающего сервера, выполняющего запросы среды CLR, а также при мониторинге сервера для сбора сведений о пользователях, базе данных, успешном завершении и других сведений, касающихся загрузки сборки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--XQuery Static Type-->
+    <EVENT>
+      <ID>198</ID>
+      <DESCRIPTION>Возникает, когда SQL Server выполняет XQuery. Этот класс событий представляет статический тип выражения XQuery. В случае использования метода valuе() статически выводимый тип отображается после применения атомизации выражения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--QN: subscription-->
+    <EVENT>
+      <ID>199</ID>
+	  <DESCRIPTION>Определяет действия, относящиеся к текущей регистрации на подписку и к срабатыванию подписки.</DESCRIPTION>
+	  <BESTPRACTICE/>
+	</EVENT>
+    <!--QN: parameter table-->
+    <EVENT>
+      <ID>200</ID>
+      <DESCRIPTION>Позволяет отслеживать создание и удаление внутренних таблиц параметров. Эти таблицы применяются для сохранения сведений об активных подписках.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--QN: template-->
+    <EVENT>
+      <ID>201</ID>
+	  <DESCRIPTION>Позволяет отслеживать, когда запрос на новую подписку принадлежит к существующему (Match) или новому (Create) классу. Третий подкласс событий (Drop) используется для удаления шаблонов классов запросов без активных подписок.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--QN: dynamics-->
+    <EVENT>
+      <ID>202</ID>
+	  <DESCRIPTION>Отслеживает внутреннюю деятельность уведомлений запросов.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+	<!--Bitmap Warning-->
+    <EVENT>
+      <ID>212</ID>
+	  <DESCRIPTION>Указывает, что в запросе отключена битовая фильтрация.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+	<!--Database Suspect Data Page-->
+    <EVENT>
+      <ID>213</ID>
+	  <DESCRIPTION>Возникает при добавлении страницы в таблицу suspect_pages в базе данных msdb.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--CPU threshold exceeded-->
+    <EVENT>
+      <ID>214</ID>
+      <DESCRIPTION>Указывает, что Resource Governor обнаружил запрос, превышающий пороговое значение загрузки ЦП, заданное в параметре REQUEST_MAX_CPU_TIME_SEC.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--PreConnect:Starting-->
+    <EVENT>
+      <ID>215</ID>
+      <DESCRIPTION>Указывает на запуск триггера LOGON или функции-классификатора Resource Governor.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+    <!--PreConnect:Completed-->
+    <EVENT>
+      <ID>216</ID>
+      <DESCRIPTION>Указывает на завершение выполнения триггера LOGON или функции-классификатора Resource Governor.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </EVENT>
+	<!--Plan Guide Successful-->
+	<EVENT>
+	  <ID>217</ID>
+	  <DESCRIPTION>Указывает, что SQL Server успешно сформировал план выполнения для запроса или пакет, содержащий структуру плана.</DESCRIPTION>
+	  <BESTPRACTICE/>
+	</EVENT>
+	<!--Plan Guide Unsuccessful-->
+	<EVENT>
+	  <ID>218</ID>
+	  <DESCRIPTION>Указывает, что SQL Server не может сформировать план выполнения для запроса или пакет, содержащий структуру плана. Указывает, что SQL Server пытался сформировать план выполнения для этого запроса или пакета без применения структуры плана. Причиной неполадки может быть недопустимая структура плана. Структуру плана можно проверить с использованием системной функции sys.fn_validate_plan_guide.</DESCRIPTION>
+	  <BESTPRACTICE/>
+	</EVENT>
+	<!--Audit Fulltext-->
+	<EVENT>
+	  <ID>235</ID>
+	  <DESCRIPTION>Отслеживает соединения между процессом SQL Server и процессом управляющей программы полнотекстовой фильтрации.</DESCRIPTION>
+	  <BESTPRACTICE/>
+	</EVENT>
+  </EVENTLIST>
+  <COLUMNLIST>
+    <!--TextData-->
+    <COLUMN>
+      <ID>1</ID>
+      <DESCRIPTION>Текстовое значение, зависящее от класса событий, который был зафиксирован при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--BinaryData-->
+    <COLUMN>
+      <ID>2</ID>
+      <DESCRIPTION>Значение типа Binary, зависящее от класса событий, фиксируемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--DatabaseID-->
+    <COLUMN>
+      <ID>3</ID>
+      <DESCRIPTION>Идентификатор базы данных, указанный в инструкции USE, или база данных по умолчанию, если для данного соединения инструкция USE не выполнялась.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--TransactionID-->
+    <COLUMN>
+      <ID>4</ID>
+      <DESCRIPTION>Идентификатор транзакции, назначенный системой.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--LineNumber-->
+    <COLUMN>
+      <ID>5</ID>
+      <DESCRIPTION>Отображает номер строки, содержащей ошибку.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--NTUserName-->
+    <COLUMN>
+      <ID>6</ID>
+      <DESCRIPTION>Имя пользователя Windows.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--NTDomainName-->
+    <COLUMN>
+      <ID>7</ID>
+      <DESCRIPTION>Домен Windows, которому принадлежит пользователь.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--HostName-->
+    <COLUMN>
+      <ID>8</ID>
+      <DESCRIPTION>Имя компьютера, на котором выполняется клиент. Заполнение этого столбца данных производится в случае, если клиент предоставляет имя узла. Чтобы определить имя узла, используйте функцию HOST_NAME.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ClientProcessID-->
+    <COLUMN>
+      <ID>9</ID>
+      <DESCRIPTION>Идентификатор процесса приложения, вызывающего SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ApplicationName-->
+    <COLUMN>
+      <ID>10</ID>
+      <DESCRIPTION>Имя клиентского приложения, установившего соединение с экземпляром SQL Server. Этот столбец заполняется не отображаемым именем программы, а значениями, которые передаются приложением.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--LoginName-->
+    <COLUMN>
+      <ID>11</ID>
+      <DESCRIPTION>Имя для входа пользователя (либо имя для входа безопасности SQL Server, либо учетные данные для входа Windows в формате ДОМЕН\Имя_пользователя).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--SPID-->
+    <COLUMN>
+      <ID>12</ID>
+      <DESCRIPTION>Идентификатор серверного процесса, который SQL Server назначил процессу, связанному с клиентской программой.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Duration-->
+    <COLUMN>
+      <ID>13</ID>
+      <DESCRIPTION>Количество времени (в миллисекундах), использованного событием. Хотя сервер измеряет длительность в микросекундах, приложение SQL Server Profiler может отображать это значение в миллисекундах (в зависимости от значения параметра в диалоговом окне "Сервис"&gt;"Параметры").</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--StartTime-->
+    <COLUMN>
+      <ID>14</ID>
+      <DESCRIPTION>Время начала события, если известно.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--EndTime-->
+    <COLUMN>
+      <ID>15</ID>
+      <DESCRIPTION>Время окончания события, если оно известно. Этот столбец не заполняется для начальных классов событий, таких как SQL:BatchStarting или SP:Starting.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Reads-->
+    <COLUMN>
+      <ID>16</ID>
+      <DESCRIPTION>Число логических чтений диска, выполненных сервером от имени события.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Writes-->
+    <COLUMN>
+      <ID>17</ID>
+      <DESCRIPTION>Число операций записи на физический диск, выполненных сервером от имени события.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--CPU-->
+    <COLUMN>
+      <ID>18</ID>
+      <DESCRIPTION>Время ЦП (в миллисекундах), использованное событием.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Permissions-->
+    <COLUMN>
+      <ID>19</ID>
+      <DESCRIPTION>Целочисленное значение, представляющее тип проверяемых разрешений.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Severity-->
+    <COLUMN>
+      <ID>20</ID>
+      <DESCRIPTION>Степень серьезности исключения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--EventSubClass-->
+    <COLUMN>
+      <ID>21</ID>
+      <DESCRIPTION>Тип подкласса событий. Этот столбец данных заполняется не для всех классов событий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ObjectID-->
+    <COLUMN>
+      <ID>22</ID>
+      <DESCRIPTION>Идентификатор объекта, назначенный системой.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Success-->
+    <COLUMN>
+      <ID>23</ID>
+      <DESCRIPTION>1 = успешное завершение, 0 = неуспешное завершение (например, 1 означает успешную проверку наличия разрешения, а 0 означает ошибку при этой проверке).</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--IndexID-->
+    <COLUMN>
+      <ID>24</ID>
+      <DESCRIPTION>Идентификатор индекса объекта, на который влияет событие. Узнать идентификатор индекса для объекта можно в столбце indid системной таблицы sysindexes.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--IntegerData-->
+    <COLUMN>
+      <ID>25</ID>
+      <DESCRIPTION>Целочисленное значение, зависящее от класса событий, собираемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ServerName-->
+    <COLUMN>
+      <ID>26</ID>
+      <DESCRIPTION>Имя трассируемого экземпляра SQL Server.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--EventClass-->
+    <COLUMN>
+      <ID>27</ID>
+      <DESCRIPTION>Имя класса событий.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ObjectType-->
+    <COLUMN>
+      <ID>28</ID>
+      <DESCRIPTION>Значение, отражающее тип объекта, участвующего в событии. Это значение соответствует столбцу type в таблице sysobjects.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--NestLevel-->
+    <COLUMN>
+      <ID>29</ID>
+      <DESCRIPTION>Целое число, представляющее данные, которые возвращает @@NESTLEVEL.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--State-->
+    <COLUMN>
+      <ID>30</ID>
+      <DESCRIPTION>Эквивалентно коду состояния ошибки.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Error-->
+    <COLUMN>
+      <ID>31</ID>
+      <DESCRIPTION>Номер ошибки данного события. Зачастую это номер ошибки, хранимый в таблице sysmessages.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Mode-->
+    <COLUMN>
+      <ID>32</ID>
+      <DESCRIPTION>Целочисленное значение, используемое различными событиями для описания полученного или запрашиваемого ими состояния.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Handle-->
+    <COLUMN>
+      <ID>33</ID>
+      <DESCRIPTION>Целочисленное значение, используемое функциями ODBC, OLE DB или DB-Library для координации работы с сервером.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ObjectName-->
+    <COLUMN>
+      <ID>34</ID>
+      <DESCRIPTION>Имя объекта, на который указывает ссылка.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--DatabaseName-->
+    <COLUMN>
+      <ID>35</ID>
+      <DESCRIPTION>Имя базы данных, в которой выполняется инструкция пользователя.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--FileName-->
+    <COLUMN>
+      <ID>36</ID>
+      <DESCRIPTION>Логическое имя изменяемого файла.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--OwnerName-->
+    <COLUMN>
+      <ID>37</ID>
+      <DESCRIPTION>Имя пользователя базы данных, владеющего объектом.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--RoleName-->
+    <COLUMN>
+      <ID>38</ID>
+      <DESCRIPTION>Имя включаемой роли приложения.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--TargetUserName-->
+    <COLUMN>
+      <ID>39</ID>
+      <DESCRIPTION>Для действий, совершаемых с пользователем базы данных (например, для предоставления разрешений), указывается имя этого пользователя.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--DBUserName-->
+    <COLUMN>
+      <ID>40</ID>
+      <DESCRIPTION>Имя пользователя SQL Server, используемое клиентом.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--LoginSid-->
+    <COLUMN>
+      <ID>41</ID>
+      <DESCRIPTION>Идентификатор безопасности вошедшего в систему пользователя. Эти сведения можно просмотреть в таблице syslogins базы данных master. Значение идентификатора безопасности уникально для каждого имени для входа на сервере.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--TargetLoginName-->
+    <COLUMN>
+      <ID>42</ID>
+      <DESCRIPTION>Для действий с именем для входа (например: добавления нового имени для входа) здесь указывается это имя для входа.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--TargetLoginSid-->
+    <COLUMN>
+      <ID>43</ID>
+      <DESCRIPTION>Для действий с именем для входа (например: добавления нового имени для входа) выводится идентификатор безопасности этого имени для входа.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ColumnPermissions-->
+    <COLUMN>
+      <ID>44</ID>
+      <DESCRIPTION>Признак установки разрешения на доступ к столбцу. Выполните синтаксический анализ текста инструкции, чтобы определить, какие именно разрешения были применены к тем или иным столбцам.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--LinkedServerName-->
+    <COLUMN>
+      <ID>45</ID>
+      <DESCRIPTION>Имя связанного сервера.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ProviderName-->
+    <COLUMN>
+      <ID>46</ID>
+      <DESCRIPTION>Имя поставщика OLE DB.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--MethodName-->
+    <COLUMN>
+      <ID>47</ID>
+      <DESCRIPTION>Имя метода OLE DB.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--RowCounts-->
+    <COLUMN>
+      <ID>48</ID>
+      <DESCRIPTION>Количество строк в пакете.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--RequestID-->
+    <COLUMN>
+      <ID>49</ID>
+      <DESCRIPTION>Идентификатор запроса, который содержит инструкцию.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--XactSequence-->
+    <COLUMN>
+      <ID>50</ID>
+      <DESCRIPTION>Токен для описания текущей транзакции.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--EventSequence-->
+    <COLUMN>
+      <ID>51</ID>
+      <DESCRIPTION>Порядковый номер данного события в запросе.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--BigintData1-->
+    <COLUMN>
+      <ID>52</ID>
+      <DESCRIPTION>Значение типа Bigint, зависящее от класса событий, фиксируемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--BigintData2-->
+    <COLUMN>
+      <ID>53</ID>
+      <DESCRIPTION>Значение типа Bigint, зависящее от класса событий, фиксируемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--GUID-->
+    <COLUMN>
+      <ID>54</ID>
+      <DESCRIPTION>Значение идентификатора GUID, зависящее от класса событий, фиксируемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--IntegerData2-->
+    <COLUMN>
+      <ID>55</ID>
+      <DESCRIPTION>Целочисленное значение, зависящее от класса событий, собираемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ObjectID2-->
+    <COLUMN>
+      <ID>56</ID>
+      <DESCRIPTION>Идентификатор связанного объекта или сущности, если имеется.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Type-->
+    <COLUMN>
+      <ID>57</ID>
+      <DESCRIPTION>Целочисленное значение, зависящее от класса событий, собираемых при трассировке.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--OwnerID-->
+    <COLUMN>
+      <ID>58</ID>
+      <DESCRIPTION>Тип объекта, получившего блокировку (для событий блокировки)</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--ParentName-->
+    <COLUMN>
+      <ID>59</ID>
+      <DESCRIPTION>Имя схемы, в которой находится объект.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--IsSystem-->
+    <COLUMN>
+      <ID>60</ID>
+      <DESCRIPTION>Указывает, произошло ли событие в системном или пользовательском процессе. 1 = системный процесс, 0 = пользовательский процесс.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--Offset-->
+    <COLUMN>
+      <ID>61</ID>
+      <DESCRIPTION>Начальное смещение инструкции в пределах хранимой процедуры или пакета.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--SourceDatabaseID-->
+    <COLUMN>
+      <ID>62</ID>
+      <DESCRIPTION>Идентификатор базы данных, в которой находится источник объекта.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--SqlHandle-->
+    <COLUMN>
+      <ID>63</ID>
+      <DESCRIPTION>64-разрядный хэш, основанный на тексте нерегламентированного запроса или базы данных и на идентификаторе объекта SQL. Это значение может передаваться в функцию sys.dm_exec_sql_text(), чтобы получить связанный текст или объект.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--SessionLoginName-->
+    <COLUMN>
+      <ID>64</ID>
+      <DESCRIPTION>Имя для входа пользователя, который инициировал сеанс. Например, при подключении к SQL Server с именем Имя_для_входа1 и выполнении инструкции под именем Имя_для_входа2 функция SessionLoginName выводит значение Имя_для_входа1, а функция LoginName - значение Имя_для_входа2. В этом столбце отображается как имя для входа SQL Server, так и имя для входа Windows.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--PlanHandle-->
+    <COLUMN>
+      <ID>65</ID>
+      <DESCRIPTION>Указывает идентификатор GUID для дескриптора плана. По этому идентификатору GUID при помощи функции sys.dm_exec_query_plan можно получить план выполнения в формате XML.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+    <!--GroupID-->
+    <COLUMN>
+      <ID>66</ID>
+      <DESCRIPTION>Указывает идентификатор группы, проходящей классификацию в текущем сеансе Resource Governor.</DESCRIPTION>
+      <BESTPRACTICE/>
+    </COLUMN>
+  </COLUMNLIST>
+</EventColumnDescriptions>
